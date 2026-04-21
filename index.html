@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fulman – Catalogue de Services</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #16161f;
+    --border: #1e1e2e;
+    --border2: #2a2a3e;
+    --accent: #00e5ff;
+    --pro: #7c3aed;
+    --text: #e8e8f0;
+    --muted: #6b6b80;
+    --part: #00b4cc;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    padding: 48px 24px 80px;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: -200px; left: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0,229,255,0.05) 0%, transparent 70%);
+    pointer-events: none;
+    animation: drift 14s ease-in-out infinite alternate;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    bottom: -200px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(124,58,237,0.06) 0%, transparent 70%);
+    pointer-events: none;
+    animation: drift 18s ease-in-out infinite alternate-reverse;
+  }
+
+  @keyframes drift {
+    from { transform: translate(0,0); }
+    to   { transform: translate(40px, 40px); }
+  }
+
+  .wrapper { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+
+  header { text-align: center; margin-bottom: 64px; animation: fadeUp 0.8s ease both; }
+
+  .logo-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    opacity: 0.85;
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #ffffff 0%, #a0a0c0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+  }
+
+  .subtitle { font-size: 14px; color: var(--muted); font-family: 'DM Mono', monospace; letter-spacing: 0.05em; }
+
+  .section-tab {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-tab h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .section-tab.part h2 { color: var(--part); }
+  .section-tab.pro h2  { color: #a78bfa; }
+  .section-tab .tab-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
+
+  .category { margin-bottom: 48px; animation: fadeUp 0.7s ease both; }
+  .category-header { margin-bottom: 16px; }
+  .category-header h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 22px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    user-select: none;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .part .card::before { background: linear-gradient(135deg, rgba(0,229,255,0.04), transparent); }
+  .pro  .card::before { background: linear-gradient(135deg, rgba(124,58,237,0.06), transparent); }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,0.5); }
+  .part .card:hover { border-color: rgba(0,229,255,0.4); }
+  .pro  .card:hover { border-color: rgba(124,58,237,0.45); }
+  .card:hover::before { opacity: 1; }
+
+  .card-name { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 6px; line-height: 1.3; }
+  .card-desc { font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 16px; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; }
+
+  .card-price { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; }
+  .part .card-price { color: var(--part); }
+  .pro  .card-price { color: #a78bfa; }
+
+  .card-cta {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .card:hover .card-cta { opacity: 1; }
+
+  .card.featured {
+    border-color: rgba(124,58,237,0.5);
+    background: linear-gradient(135deg, #111118, #150d25);
+  }
+  .badge {
+    position: absolute;
+    top: 14px; right: 14px;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--pro);
+    color: #fff;
+    padding: 3px 7px;
+    border-radius: 2px;
+  }
+
+  .segment { margin-bottom: 72px; }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 56px 0; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  footer {
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 48px;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+  }
+
+  /* MODAL */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(6,6,12,0.85);
+    backdrop-filter: blur(8px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .overlay.open { opacity: 1; pointer-events: all; }
+
+  .modal {
+    background: var(--surface2);
+    border: 1px solid var(--border2);
+    border-radius: 14px;
+    max-width: 560px;
+    width: 100%;
+    padding: 36px;
+    position: relative;
+    transform: translateY(24px) scale(0.97);
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .overlay.open .modal { transform: translateY(0) scale(1); }
+
+  .modal-close {
+    position: absolute;
+    top: 18px; right: 18px;
+    background: var(--border);
+    border: none;
+    color: var(--muted);
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, color 0.2s;
+  }
+  .modal-close:hover { background: var(--border2); color: var(--text); }
+
+  .modal-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+  .modal-tag.part { color: var(--part); background: rgba(0,180,204,0.1); border: 1px solid rgba(0,180,204,0.2); }
+  .modal-tag.pro  { color: #a78bfa; background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.2); }
+
+  .modal-title { font-family: 'Syne', sans-serif; font-size: 1.7rem; font-weight: 800; line-height: 1.1; margin-bottom: 8px; color: #fff; }
+
+  .modal-price { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 24px; }
+  .modal-price.part { color: var(--part); }
+  .modal-price.pro  { color: #a78bfa; }
+
+  .modal-section { margin-bottom: 20px; }
+  .modal-section h4 {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .modal-section p { font-size: 14px; line-height: 1.7; color: #c0c0d0; }
+
+  .modal-includes { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .modal-includes li { font-size: 13px; color: #c0c0d0; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+  .modal-includes li::before { content: '→'; font-family: 'DM Mono', monospace; font-size: 12px; flex-shrink: 0; margin-top: 1px; }
+  .modal-includes.part li::before { color: var(--part); }
+  .modal-includes.pro  li::before { color: #a78bfa; }
+
+  .modal-ideal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .modal-ideal strong { color: var(--text); font-weight: 500; }
+
+  .modal-cta {
+    display: block;
+    width: 100%;
+    margin-top: 28px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .modal-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+  .modal-cta.part { background: var(--part); color: #000; }
+  .modal-cta.pro  { background: var(--pro); color: #fff; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <header>
+    <div class="logo-tag">fulman</div>
+    <h1>Catalogue Services</h1>
+    <p class="subtitle">// cliquez sur un service pour en savoir plus</p>
+  </header>
+
+  <!-- PARTICULIERS -->
+  <div class="segment part">
+    <div class="section-tab part">
+      <span>👤</span><h2>Offres Particuliers</h2><div class="tab-line"></div>
+    </div>
+
+    <div class="category">
+      <div class="category-header"><h3>🛠️ Installation &amp; Migration</h3></div>
+      <div class="grid">
+        <div class="card" onclick="openModal('install-os')">
+          <div class="card-name">Installation système (OS)</div>
+          <div class="card-desc">Donnez une seconde vie à votre PC</div>
+          <div class="card-footer"><div class="card-price">69,99€</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+        <div class="card" onclick="openModal('prep-pc')">
+          <div class="card-name">Préparation PC neuf</div>
+          <div class="card-desc">Configuration et optimisation dès le départ</div>
+          <div class="card-footer"><div class="card-price">69,99€</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+        <div class="card" onclick="openModal('migration')">
+          <div class="card-name">Migration / Clonage disque</div>
+          <div class="card-desc">Passez à un disque plus rapide sans perte de données</div>
+          <div class="card-footer"><div class="card-price">99,99€</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category">
+      <div class="category-header"><h3>🚨 Diagnostic &amp; Dépannage</h3></div>
+      <div class="grid">
+        <div class="card" onclick="openModal('diag-part')">
+          <div class="card-name">Diagnostic initial</div>
+          <div class="card-desc">Identification rapide du problème</div>
+          <div class="card-footer"><div class="card-price">35,99€</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+        <div class="card" onclick="openModal('depannage-part')">
+          <div class="card-name">Dépannage</div>
+          <div class="card-desc">Réparation et résolution de panne</div>
+          <div class="card-footer"><div class="card-price">60€/h</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+        <div class="card" onclick="openModal('recup-data')">
+          <div class="card-name">Récupération de données</div>
+          <div class="card-desc">Restauration de fichiers importants</div>
+          <div class="card-footer"><div class="card-price">89,99€</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category">
+      <div class="category-header"><h3>🔐 Sécurité &amp; Protection</h3></div>
+      <div class="grid">
+        <div class="card" onclick="openModal('secu-poste')">
+          <div class="card-name">Sécurisation poste de travail</div>
+          <div class="card-desc">Protection de votre ordinateur et de vos accès</div>
+          <div class="card-footer"><div class="card-price">89,99€</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+        <div class="card" onclick="openModal('backup-part')">
+          <div class="card-name">Sauvegardes personnalisées</div>
+          <div class="card-desc">Protection de vos fichiers importants</div>
+          <div class="card-footer"><div class="card-price">90€</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category">
+      <div class="category-header"><h3>🎓 Accompagnement</h3></div>
+      <div class="grid">
+        <div class="card" onclick="openModal('coaching')">
+          <div class="card-name">Coaching numérique</div>
+          <div class="card-desc">Aide personnalisée à votre rythme</div>
+          <div class="card-footer"><div class="card-price">60€</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+        <div class="card" onclick="openModal('sensib-part')">
+          <div class="card-name">Sensibilisation cybersécurité</div>
+          <div class="card-desc">Comprendre et éviter les risques</div>
+          <div class="card-footer"><div class="card-price">90€</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PROFESSIONNELS -->
+  <div class="segment pro">
+    <div class="section-tab pro">
+      <span>🏢</span><h2>Offres Professionnels</h2><div class="tab-line"></div>
+    </div>
+
+    <div class="category">
+      <div class="category-header"><h3>🌐 Réseau &amp; Infrastructure</h3></div>
+      <div class="grid">
+        <div class="card" onclick="openModal('reseau-install')">
+          <div class="card-name">Installation &amp; Configuration réseau</div>
+          <div class="card-desc">Mise en place complète de votre infrastructure</div>
+          <div class="card-footer"><div class="card-price">à partir de 150€</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+        <div class="card" onclick="openModal('admin-reseau')">
+          <div class="card-name">Administration réseau</div>
+          <div class="card-desc">Gestion et suivi du réseau de l'entreprise</div>
+          <div class="card-footer"><div class="card-price">49–99€/mois</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category">
+      <div class="category-header"><h3>🛡️ Cybersécurité</h3></div>
+      <div class="grid">
+        <div class="card" onclick="openModal('audit')">
+          <div class="card-name">Audit santé numérique</div>
+          <div class="card-desc">Analyse complète et priorisée des risques</div>
+          <div class="card-footer"><div class="card-price">149,99€</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+        <div class="card" onclick="openModal('remediation')">
+          <div class="card-name">Remédiation &amp; Sécurisation</div>
+          <div class="card-desc">Correction des failles et renforcement du système</div>
+          <div class="card-footer"><div class="card-price">119€</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+        <div class="card" onclick="openModal('teletravail')">
+          <div class="card-name">Pack Poste Télétravail</div>
+          <div class="card-desc">Environnement de travail sécurisé à distance</div>
+          <div class="card-footer"><div class="card-price">119,99€</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+        <div class="card" onclick="openModal('backup-pro')">
+          <div class="card-name">Sauvegardes personnalisées</div>
+          <div class="card-desc">Protection des données professionnelles</div>
+          <div class="card-footer"><div class="card-price">90€</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category">
+      <div class="category-header"><h3>🔵 Abonnements</h3></div>
+      <div class="grid">
+        <div class="card" onclick="openModal('soc')">
+          <div class="card-name">Cyber Monitoring (SOC)</div>
+          <div class="card-desc">Surveillance continue et alertes en cas de menace</div>
+          <div class="card-footer"><div class="card-price">79€/mois</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+        <div class="card" onclick="openModal('support-mensuel')">
+          <div class="card-name">Support Mensuel</div>
+          <div class="card-desc">Assistance technique continue</div>
+          <div class="card-footer"><div class="card-price">69,99€/mois</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+        <div class="card" onclick="openModal('maintenance')">
+          <div class="card-name">Maintenance Mensuelle</div>
+          <div class="card-desc">Entretien et optimisation de vos postes</div>
+          <div class="card-footer"><div class="card-price">59,99€/mois · /PC</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+        <div class="card featured" onclick="openModal('secu-complete')">
+          <div class="badge">⭐ Best</div>
+          <div class="card-name">Sécurité Complète</div>
+          <div class="card-desc">Maintenance + support + cybersécurité</div>
+          <div class="card-footer"><div class="card-price">129€/mois</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category">
+      <div class="category-header"><h3>🚨 Dépannage &amp; Intervention</h3></div>
+      <div class="grid">
+        <div class="card" onclick="openModal('diag-pro')">
+          <div class="card-name">Diagnostic initial</div>
+          <div class="card-desc">Identification rapide du problème</div>
+          <div class="card-footer"><div class="card-price">35,99€</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+        <div class="card" onclick="openModal('depannage-pro')">
+          <div class="card-name">Dépannage</div>
+          <div class="card-desc">Réparation et résolution de panne</div>
+          <div class="card-footer"><div class="card-price">60€/h</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+        <div class="card" onclick="openModal('recup-pro')">
+          <div class="card-name">Récupération de données</div>
+          <div class="card-desc">Restauration de fichiers importants</div>
+          <div class="card-footer"><div class="card-price">89,99€</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category">
+      <div class="category-header"><h3>🎓 Formation</h3></div>
+      <div class="grid">
+        <div class="card" onclick="openModal('formation-pro')">
+          <div class="card-name">Formation cybersécurité</div>
+          <div class="card-desc">Sensibilisation aux risques pour équipes</div>
+          <div class="card-footer"><div class="card-price">199,99€</div><span class="card-cta">Voir détails →</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>fulman · catalogue 2025 · tous droits réservés</footer>
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="handleOverlayClick(event)">
+  <div class="modal" id="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<script>
+const services = {
+  'install-os': {
+    type:'part', cat:'Installation & Migration', title:'Installation système (OS)', price:'69,99€',
+    desc:`Votre PC rame, plante au démarrage, ou Windows est devenu instable ? Une réinstallation propre du système remet votre machine à zéro — comme au premier jour. On s'occupe de tout, du téléchargement de la bonne version jusqu'à vous rendre un PC prêt à l'emploi.`,
+    includes:['Sauvegarde préalable de vos données (si demandée)','Installation officielle de Windows 10 ou 11','Installation des pilotes adaptés à votre matériel','Configuration de votre compte utilisateur','Installation des logiciels essentiels (navigateur, antivirus, Office si licencié)','Test complet avant restitution'],
+    ideal:`<strong>Idéal si :</strong> votre PC est lent depuis longtemps, infecté par un virus, ou si vous voulez repartir sur une base saine sans racheter de machine.`
+  },
+  'prep-pc': {
+    type:'part', cat:'Installation & Migration', title:'Préparation PC neuf', price:'69,99€',
+    desc:`Les PC neufs arrivent souvent chargés de logiciels inutiles, de paramètres par défaut mal configurés et sans aucune protection. On prépare votre machine correctement dès le départ pour qu'elle soit rapide, sécurisée et taillée pour votre usage — dès le premier allumage.`,
+    includes:['Suppression des logiciels bloatware préinstallés','Mise à jour complète du système et des pilotes','Configuration de votre compte et de vos préférences','Installation et paramétrage d\'un antivirus efficace','Activation de la sauvegarde automatique','Vérification de la licence Windows','Conseils personnalisés pour bien démarrer'],
+    ideal:`<strong>Idéal si :</strong> vous venez d'acheter un PC et voulez démarrer du bon pied, sans mauvaises surprises dans les premières semaines.`
+  },
+  'migration': {
+    type:'part', cat:'Installation & Migration', title:'Migration / Clonage disque', price:'99,99€',
+    desc:`Vous avez acheté un SSD pour booster votre PC, ou votre disque montre des signes de faiblesse ? On transfère l'intégralité de votre système — Windows, applications, fichiers — vers le nouveau disque, sans rien perdre. Votre PC redémarre exactement comme avant, mais bien plus vite.`,
+    includes:['Diagnostic de l\'état de votre disque actuel','Clonage complet du disque (système + données)','Vérification de l\'intégrité après migration','Installation physique du nouveau disque si besoin','Test de démarrage et de performance','Effacement sécurisé de l\'ancien disque sur demande'],
+    ideal:`<strong>Idéal si :</strong> vous passez d'un HDD à un SSD, ou si vous souhaitez remplacer un disque vieillissant sans tout réinstaller depuis zéro.`
+  },
+  'diag-part': {
+    type:'part', cat:'Diagnostic & Dépannage', title:'Diagnostic initial', price:'35,99€',
+    desc:`Votre PC fait un bruit bizarre, ne s'allume plus correctement, affiche des erreurs sans raison apparente ? Avant toute intervention, on analyse votre machine de fond en comble pour identifier précisément ce qui ne va pas. Vous recevez un compte-rendu clair et des recommandations honnêtes, sans engagement.`,
+    includes:['Analyse matérielle complète (processeur, RAM, disque, alimentation)','Vérification de l\'état du système d\'exploitation','Recherche de logiciels malveillants','Test de stabilité et de température','Compte-rendu détaillé du diagnostic','Recommandations claires avec estimation de coût de réparation'],
+    ideal:`<strong>Idéal si :</strong> vous ne savez pas d'où vient le problème et voulez un avis expert avant de décider quoi faire.`
+  },
+  'depannage-part': {
+    type:'part', cat:'Diagnostic & Dépannage', title:'Dépannage', price:'60€/h',
+    desc:`Écran bleu, connexion internet qui lâche, imprimante muette, logiciel qui plante en boucle... On intervient directement pour corriger le problème, vous expliquer ce qui s'est passé, et s'assurer que ça ne se reproduise pas.`,
+    includes:['Prise en charge du problème signalé','Intervention à distance ou en présentiel selon le cas','Explication claire de la cause et de la solution','Test de bon fonctionnement après intervention','Conseils pour éviter la récidive'],
+    ideal:`<strong>Idéal si :</strong> vous avez un problème identifié et voulez qu'il soit réglé rapidement et efficacement.`
+  },
+  'recup-data': {
+    type:'part', cat:'Diagnostic & Dépannage', title:'Récupération de données', price:'89,99€',
+    desc:`Vous avez supprimé des fichiers importants par erreur, votre disque est tombé en panne, ou Windows ne démarre plus ? Dans beaucoup de cas, vos données sont encore là — il faut juste savoir les retrouver. On met tout en œuvre pour récupérer vos photos, documents et fichiers précieux.`,
+    includes:['Analyse de l\'état du support (disque dur, SSD, clé USB, carte SD)','Récupération avec outils spécialisés','Extraction et transfert des fichiers récupérés','Vérification de l\'intégrité des données récupérées','Conseils pour éviter toute perte future'],
+    ideal:`<strong>Idéal si :</strong> vous avez perdu des fichiers suite à une suppression accidentelle, une panne ou un formatage. <em>Le succès dépend de l'état du support — un bilan honnête vous sera donné avant toute intervention.</em>`
+  },
+  'secu-poste': {
+    type:'part', cat:'Sécurité & Protection', title:'Sécurisation poste de travail', price:'89,99€',
+    desc:`Votre PC est la porte d'entrée de votre vie numérique : emails, banque en ligne, photos personnelles... On le sécurise de A à Z pour que vous naviguiez l'esprit tranquille, sans craindre virus, piratage ou vol de mot de passe.`,
+    includes:['Audit de sécurité du poste (logiciels, paramètres, mots de passe)','Installation et configuration d\'un antivirus performant','Activation du pare-feu et des protections système','Nettoyage des logiciels suspects ou indésirables','Configuration d\'un gestionnaire de mots de passe','Mise à jour complète du système et des applications','Conseils personnalisés sur les bonnes habitudes numériques'],
+    ideal:`<strong>Idéal si :</strong> vous n'avez jamais vraiment sécurisé votre PC, si vous avez été victime d'un virus, ou si vous souhaitez simplement avoir la certitude que tout est bien protégé.`
+  },
+  'backup-part': {
+    type:'part', cat:'Sécurité & Protection', title:'Sauvegardes personnalisées', price:'90€',
+    desc:`Un disque qui lâche, un vol, une mauvaise manipulation — et toutes vos photos, documents, souvenirs peuvent disparaître en un instant. On met en place une stratégie de sauvegarde automatique, fiable et adaptée à votre usage, pour que vous ne perdiez plus jamais rien.`,
+    includes:['Analyse de vos données et de vos besoins','Configuration d\'une sauvegarde locale (disque externe)','Configuration d\'une sauvegarde cloud sécurisée','Automatisation des sauvegardes (quotidienne ou hebdomadaire)','Test de restauration pour vérifier que ça fonctionne vraiment','Guide simple pour surveiller vos sauvegardes'],
+    ideal:`<strong>Idéal si :</strong> vous n'avez aucune sauvegarde en place, ou si vous ne savez pas vraiment si vos données sont protégées.`
+  },
+  'coaching': {
+    type:'part', cat:'Accompagnement', title:'Coaching numérique', price:'60€',
+    desc:`Vous vous sentez dépassé par la technologie ? Vous aimeriez mieux utiliser votre PC, votre smartphone, vos applications ? On prend le temps de vous accompagner, à votre rythme, sans jargon. Posez toutes vos questions — il n'y en a pas de mauvaises.`,
+    includes:['Session d\'1h à 2h à domicile ou à distance','Programme adapté à vos besoins et votre niveau','Prise en main guidée des outils (PC, tablette, smartphone)','Aide sur les applications du quotidien (email, Office, Drive, etc.)','Conseils pratiques applicables seul ensuite','Support par message après la session'],
+    ideal:`<strong>Idéal si :</strong> vous souhaitez gagner en autonomie avec le numérique, ou si vous avez des proches qui ont besoin d'aide pour s'y retrouver.`
+  },
+  'sensib-part': {
+    type:'part', cat:'Accompagnement', title:'Sensibilisation cybersécurité', price:'90€',
+    desc:`Phishing, arnaques en ligne, faux supports techniques, vol de mot de passe... Les menaces numériques ciblent tout le monde. On vous apprend à les reconnaître et à les éviter, concrètement et simplement, avec des exemples issus du quotidien.`,
+    includes:['Session interactive d\'environ 1h30','Présentation des arnaques les plus courantes avec exemples réels','Comment reconnaître un email ou un site frauduleux','Les bons réflexes pour protéger vos comptes et mots de passe','Que faire si vous pensez avoir été piégé','Guide récapitulatif remis à la fin de la session'],
+    ideal:`<strong>Idéal si :</strong> vous avez déjà reçu des emails suspects, failli tomber dans un piège, ou souhaitez simplement être mieux armé face aux risques du quotidien numérique.`
+  },
+  'reseau-install': {
+    type:'pro', cat:'Réseau & Infrastructure', title:'Installation & Configuration réseau', price:'à partir de 150€',
+    desc:`Une infrastructure réseau bien conçue, c'est la colonne vertébrale de votre entreprise. On conçoit et installe votre réseau de A à Z — WiFi performant, postes reliés, accès sécurisés — pour que tout fonctionne parfaitement dès le premier jour.`,
+    includes:['Audit de vos besoins et conception du plan réseau','Installation et configuration du routeur et switch','Déploiement du WiFi professionnel (couverture optimisée)','Connexion et configuration des postes de travail','Mise en place des accès sécurisés (VPN, segmentation réseau)','Tests de performance et de stabilité','Documentation de votre infrastructure remise à la fin'],
+    ideal:`<strong>Idéal si :</strong> vous ouvrez de nouveaux locaux, déménagez, ou si votre réseau actuel est lent, instable ou mal sécurisé.`
+  },
+  'admin-reseau': {
+    type:'pro', cat:'Réseau & Infrastructure', title:'Administration réseau', price:'49–99€/mois',
+    desc:`Votre réseau a besoin d'être surveillé et maintenu en permanence pour rester performant et sécurisé. On prend en charge sa gestion au quotidien — mises à jour, surveillance, résolution des incidents — sans que vous ayez à vous en préoccuper.`,
+    includes:['Supervision continue du réseau et des équipements','Mises à jour des firmwares et configurations','Gestion des accès utilisateurs et des droits','Rapport mensuel de l\'état de votre réseau','Intervention prioritaire en cas d\'incident','Recommandations d\'évolution selon vos besoins'],
+    ideal:`<strong>Idéal si :</strong> vous n'avez pas de responsable IT en interne et souhaitez déléguer la gestion de votre réseau à un expert de confiance.`
+  },
+  'audit': {
+    type:'pro', cat:'Cybersécurité', title:'Audit santé numérique', price:'149,99€',
+    desc:`Savez-vous vraiment où sont les failles de votre système ? Un audit complet dresse un état des lieux objectif de votre sécurité : ce qui est bien en place, ce qui est vulnérable, ce qu'il faut corriger en priorité. Vous recevez un rapport clair, sans jargon, avec un plan d'action concret.`,
+    includes:['Analyse de l\'ensemble de votre parc informatique','Audit des accès, mots de passe et gestion des comptes','Vérification des mises à jour et correctifs de sécurité','Analyse de votre politique de sauvegarde','Test de résistance aux tentatives d\'intrusion basiques','Rapport priorisé : risques critiques, moyens, faibles','Présentation des résultats et recommandations'],
+    ideal:`<strong>Idéal si :</strong> vous n'avez jamais fait auditer votre sécurité, avez subi un incident, ou souhaitez être conforme aux exigences de vos clients ou partenaires.`
+  },
+  'remediation': {
+    type:'pro', cat:'Cybersécurité', title:'Remédiation & Sécurisation', price:'119€',
+    desc:`Suite à un audit ou un incident, il faut passer à l'action. On corrige les vulnérabilités identifiées, renforce la sécurité de vos systèmes et met en place les bonnes pratiques pour réduire significativement votre exposition aux risques.`,
+    includes:['Correction des failles identifiées lors de l\'audit','Durcissement des configurations système et réseau','Mise à jour et patch de sécurité des équipements','Renforcement de la politique de mots de passe','Mise en place ou amélioration de l\'antivirus/EDR','Vérification post-remédiation pour valider les corrections'],
+    ideal:`<strong>Idéal si :</strong> vous venez de réaliser un audit et souhaitez passer à l'action, ou si vous avez subi un incident et voulez vous assurer que ça ne se reproduise pas.`
+  },
+  'teletravail': {
+    type:'pro', cat:'Cybersécurité', title:'Pack Poste Télétravail', price:'119,99€',
+    desc:`Le télétravail est une aubaine pour les hackers : connexions depuis des réseaux non sécurisés, postes personnels mal protégés, accès aux données de l'entreprise sans contrôle. On configure chaque poste pour qu'il soit aussi sécurisé que dans vos locaux, où que soit le collaborateur.`,
+    includes:['Configuration du VPN d\'entreprise sur le poste','Chiffrement du disque dur (BitLocker ou équivalent)','Installation et paramétrage de l\'antivirus professionnel','Configuration des accès distants sécurisés','Politique de verrouillage automatique et mots de passe forts','Sensibilisation du collaborateur aux bonnes pratiques'],
+    ideal:`<strong>Idéal si :</strong> vous avez des collaborateurs en télétravail et souhaitez vous assurer que les données de l'entreprise restent protégées, où qu'ils se trouvent.`
+  },
+  'backup-pro': {
+    type:'pro', cat:'Cybersécurité', title:'Sauvegardes personnalisées', price:'90€',
+    desc:`Pour une entreprise, perdre ses données peut signifier perdre son activité. On conçoit et met en place une stratégie de sauvegarde robuste, adaptée à vos contraintes métier, avec des tests réguliers pour s'assurer que la restauration fonctionne vraiment le jour J.`,
+    includes:['Audit des données critiques à protéger','Mise en place d\'une solution de sauvegarde locale et/ou cloud','Automatisation et planification des sauvegardes','Chiffrement des sauvegardes pour protéger les données sensibles','Test de restauration complet','Documentation et procédure de récupération d\'urgence'],
+    ideal:`<strong>Idéal si :</strong> vous n'avez pas de politique de sauvegarde formalisée, ou si vous ne savez pas si vos sauvegardes actuelles sont réellement fiables.`
+  },
+  'soc': {
+    type:'pro', cat:'Abonnements', title:'Cyber Monitoring (SOC)', price:'79€/mois',
+    desc:`Les cyberattaques ne préviennent pas. Elles frappent la nuit, le week-end, pendant les vacances. Notre surveillance continue analyse en temps réel les activités de votre système et vous alerte immédiatement en cas de comportement suspect — avant que les dégâts ne surviennent.`,
+    includes:['Surveillance 24h/24, 7j/7 de votre infrastructure','Détection des comportements anormaux et tentatives d\'intrusion','Alertes immédiates en cas de menace détectée','Rapport mensuel d\'activité et de sécurité','Intervention rapide en cas d\'incident confirmé','Corrélation des événements pour détecter les attaques complexes'],
+    ideal:`<strong>Idéal si :</strong> vous gérez des données sensibles, traitez des paiements ou avez des obligations de conformité (RGPD, etc.) et souhaitez une protection active, pas seulement réactive.`
+  },
+  'support-mensuel': {
+    type:'pro', cat:'Abonnements', title:'Support Mensuel', price:'69,99€/mois',
+    desc:`Un problème informatique au mauvais moment peut bloquer toute votre équipe. Avec notre support mensuel, vous avez un expert disponible rapidement pour résoudre vos incidents, répondre à vos questions et garder vos outils opérationnels — sans avoir à chercher qui appeler.`,
+    includes:['Accès prioritaire à notre support technique','Assistance par téléphone, email et prise de contrôle à distance','Résolution des incidents du quotidien (logiciels, accès, périphériques)','Suivi des demandes et historique des interventions','Temps de réponse garanti sous 4h ouvrées','Rapport mensuel des interventions réalisées'],
+    ideal:`<strong>Idéal si :</strong> vous n'avez pas de service IT interne et voulez un interlocuteur unique, réactif et de confiance pour tous vos problèmes informatiques.`
+  },
+  'maintenance': {
+    type:'pro', cat:'Abonnements', title:'Maintenance Mensuelle', price:'59,99€/mois · /PC',
+    desc:`Un PC bien entretenu, c'est un PC qui ne tombe pas en panne. Chaque mois, on s'assure que vos postes sont à jour, optimisés, et que rien ne se dégrade silencieusement. C'est de la médecine préventive pour votre parc informatique.`,
+    includes:['Mise à jour du système et des logiciels critiques','Nettoyage des fichiers temporaires et optimisation des performances','Vérification de l\'état des disques et de la mémoire','Contrôle de la protection antivirus et des journaux de sécurité','Vérification des sauvegardes','Rapport mensuel par poste avec indicateurs de santé'],
+    ideal:`<strong>Idéal si :</strong> vous souhaitez éviter les pannes imprévues et maximiser la durée de vie de votre matériel, sans y penser vous-même.`
+  },
+  'secu-complete': {
+    type:'pro', cat:'Abonnements', title:'Sécurité Complète', price:'129€/mois',
+    desc:`Notre offre la plus complète regroupe tout ce dont une PME a besoin pour être sérieusement protégée et bien accompagnée : maintenance régulière, support réactif et cybersécurité active. Un seul abonnement, un seul interlocuteur, une tranquillité d'esprit totale.`,
+    includes:['Tout le contenu du Support Mensuel inclus','Tout le contenu de la Maintenance Mensuelle inclus','Surveillance de sécurité et détection des menaces','Mises à jour de sécurité prioritaires','Rapport mensuel consolidé (performance + sécurité)','Consultation trimestrielle pour faire évoluer votre infrastructure','Tarif préférentiel sur les interventions ponctuelles'],
+    ideal:`<strong>Idéal si :</strong> vous voulez déléguer entièrement votre informatique à un expert de confiance, sans vous soucier de ce qui est couvert ou non.`
+  },
+  'diag-pro': {
+    type:'pro', cat:'Dépannage & Intervention', title:'Diagnostic initial', price:'35,99€',
+    desc:`Un poste ne démarre plus, un serveur se comporte bizarrement, une erreur bloque vos collaborateurs ? On identifie précisément l'origine du problème. Un diagnostic rigoureux évite les fausses pistes, les interventions inutiles et les pertes de temps.`,
+    includes:['Analyse matérielle et logicielle du poste ou serveur concerné','Consultation des journaux d\'événements et d\'erreurs','Identification de la cause racine du problème','Compte-rendu clair avec recommandations d\'intervention','Estimation du temps et du coût de résolution'],
+    ideal:`<strong>Idéal si :</strong> vous ne savez pas d'où vient le problème et voulez un diagnostic professionnel avant d'engager des frais de réparation.`
+  },
+  'depannage-pro': {
+    type:'pro', cat:'Dépannage & Intervention', title:'Dépannage', price:'60€/h',
+    desc:`Un incident bloque vos collaborateurs ? On intervient rapidement — à distance ou sur site — pour rétablir la situation dans les meilleurs délais. Notre priorité : remettre votre équipe au travail le plus vite possible, sans compromettre la sécurité.`,
+    includes:['Prise en charge rapide de l\'incident signalé','Intervention à distance ou déplacement sur site selon urgence','Résolution du problème et test de bon fonctionnement','Communication claire tout au long de l\'intervention','Rapport d\'intervention remis après résolution','Recommandations pour éviter la récidive'],
+    ideal:`<strong>Idéal si :</strong> vous faites face à un incident imprévu qui impacte votre activité et avez besoin d'une intervention rapide et professionnelle.`
+  },
+  'recup-pro': {
+    type:'pro', cat:'Dépannage & Intervention', title:'Récupération de données', price:'89,99€',
+    desc:`Panne de disque, suppression accidentelle, serveur inaccessible — quand des données professionnelles critiques sont en jeu, chaque heure compte. On déploie les outils spécialisés pour maximiser les chances de récupération, en toute confidentialité.`,
+    includes:['Analyse de l\'état du support défaillant','Récupération logicielle avec outils forensiques professionnels','Extraction et vérification des données récupérées','Transfert sécurisé vers un nouveau support','Rapport d\'intervention et bilan des données récupérées','Conseils pour éviter toute répétition de l\'incident'],
+    ideal:`<strong>Idéal si :</strong> vous avez perdu l'accès à des données critiques et avez besoin d'une intervention rapide et confidentielle. <em>Les chances de succès dépendent de l'état du support — un bilan honnête vous sera communiqué avant toute intervention.</em>`
+  },
+  'formation-pro': {
+    type:'pro', cat:'Formation', title:'Formation cybersécurité', price:'199,99€',
+    desc:`90% des cyberattaques réussies exploitent une erreur humaine. Former vos équipes, c'est construire votre première ligne de défense. Une session interactive, concrète et mémorable pour que chaque collaborateur sache reconnaître les menaces et adopter les bons réflexes au quotidien.`,
+    includes:['Session pour jusqu\'à 10 participants','Présentation des cybermenaces actuelles avec cas réels récents','Ateliers pratiques : reconnaître un phishing, un faux lien, une arnaque','Bonnes pratiques : mots de passe, mises à jour, comportements sûrs','Protocole à suivre en cas d\'incident','Support de formation remis à chaque participant','Quiz de fin de session pour ancrer les apprentissages'],
+    ideal:`<strong>Idéal si :</strong> vous souhaitez réduire les risques liés aux erreurs humaines, sensibiliser de nouveaux collaborateurs, ou répondre à des exigences de conformité (assurance cyber, RGPD, ISO 27001...).`
+  }
+};
+
+function openModal(id) {
+  const s = services[id];
+  if (!s) return;
+  const includesHtml = s.includes.map(i => `<li>${i}</li>`).join('');
+  document.getElementById('modal-content').innerHTML = `
+    <span class="modal-tag ${s.type}">${s.cat}</span>
+    <div class="modal-title">${s.title}</div>
+    <div class="modal-price ${s.type}">${s.price}</div>
+    <div class="modal-section">
+      <h4>À propos</h4>
+      <p>${s.desc}</p>
+    </div>
+    <div class="modal-section">
+      <h4>Ce qui est inclus</h4>
+      <ul class="modal-includes ${s.type}">${includesHtml}</ul>
+    </div>
+    <div class="modal-section">
+      <div class="modal-ideal">${s.ideal}</div>
+    </div>
+    <a href="https://wa.me/33743586807?text=Bonjour%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20le%20service%20%22${encodeURIComponent(s.title)}%22" target="_blank" class="modal-cta ${s.type}">
+      Demander un devis sur WhatsApp →
+    </a>
+  `;
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('overlay')) closeModal();
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
