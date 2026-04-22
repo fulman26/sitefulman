@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -24,24 +23,24 @@ body{
 }
 
 /* GLOW */
-body::before{content:’’;position:fixed;top:-200px;left:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(0,229,255,.05) 0%,transparent 70%);pointer-events:none;animation:drift 14s ease-in-out infinite alternate;z-index:0;}
-body::after{content:’’;position:fixed;bottom:-200px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(124,58,237,.06) 0%,transparent 70%);pointer-events:none;animation:drift 18s ease-in-out infinite alternate-reverse;z-index:0;}
+body::before{content:'';position:fixed;top:-200px;left:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(0,229,255,.05) 0%,transparent 70%);pointer-events:none;animation:drift 14s ease-in-out infinite alternate;z-index:0;}
+body::after{content:'';position:fixed;bottom:-200px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(124,58,237,.06) 0%,transparent 70%);pointer-events:none;animation:drift 18s ease-in-out infinite alternate-reverse;z-index:0;}
 @keyframes drift{from{transform:translate(0,0);}to{transform:translate(40px,40px);}}
 
 /* HEADER */
 .site-header{
-position:sticky;top:0;z-index:50;
-background:rgba(10,10,15,.9);backdrop-filter:blur(16px);
-border-bottom:1px solid var(–border);
-height:54px;display:flex;align-items:center;
-padding:0 14px;width:100%;
+  position:sticky;top:0;z-index:50;
+  background:rgba(10,10,15,.9);backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  height:54px;display:flex;align-items:center;
+  padding:0 14px;width:100%;
 }
 @media(min-width:600px){.site-header{padding:0 28px;height:60px;}}
 .site-header-inner{max-width:1100px;width:100%;margin:0 auto;display:flex;align-items:center;gap:10px;overflow:hidden;}
-.logo-tag{font-family:‘DM Mono’,monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(–accent);border:1px solid rgba(0,229,255,.5);padding:3px 9px;border-radius:3px;white-space:nowrap;flex-shrink:0;}
-.header-sep{width:1px;height:18px;background:var(–border2);flex-shrink:0;}
-.header-title{font-family:‘Syne’,sans-serif;font-size:clamp(.85rem,3vw,1.3rem);font-weight:800;letter-spacing:-.02em;background:linear-gradient(135deg,#fff,#a0a0c0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;white-space:nowrap;line-height:1;flex-shrink:1;min-width:0;overflow:hidden;text-overflow:ellipsis;}
-.header-sub{font-family:‘DM Mono’,monospace;font-size:9px;color:var(–muted);letter-spacing:.06em;white-space:nowrap;flex-shrink:1;min-width:0;overflow:hidden;text-overflow:ellipsis;display:none;}
+.logo-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(0,229,255,.5);padding:3px 9px;border-radius:3px;white-space:nowrap;flex-shrink:0;}
+.header-sep{width:1px;height:18px;background:var(--border2);flex-shrink:0;}
+.header-title{font-family:'Syne',sans-serif;font-size:clamp(.85rem,3vw,1.3rem);font-weight:800;letter-spacing:-.02em;background:linear-gradient(135deg,#fff,#a0a0c0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;white-space:nowrap;line-height:1;flex-shrink:1;min-width:0;overflow:hidden;text-overflow:ellipsis;}
+.header-sub{font-family:'DM Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.06em;white-space:nowrap;flex-shrink:1;min-width:0;overflow:hidden;text-overflow:ellipsis;display:none;}
 @media(min-width:520px){.header-sub{display:block;}}
 
 /* PAGE */
@@ -57,11 +56,11 @@ padding:0 14px;width:100%;
 .section-tab-icon{font-size:20px;flex-shrink:0;}
 @media(min-width:600px){.section-tab-icon{font-size:26px;}}
 .section-tab-text{flex:1;min-width:0;}
-.section-tab h2{font-family:‘Syne’,sans-serif;font-size:clamp(.9rem,4vw,1.8rem);font-weight:800;letter-spacing:-.01em;text-transform:uppercase;line-height:1;}
-.section-tab.part h2{color:var(–part);}
+.section-tab h2{font-family:'Syne',sans-serif;font-size:clamp(.9rem,4vw,1.8rem);font-weight:800;letter-spacing:-.01em;text-transform:uppercase;line-height:1;}
+.section-tab.part h2{color:var(--part);}
 .section-tab.pro h2{color:#a78bfa;}
-.section-tab-sub{font-family:‘DM Mono’,monospace;font-size:9px;letter-spacing:.1em;margin-top:5px;opacity:.45;}
-.section-tab.part .section-tab-sub{color:var(–part);}
+.section-tab-sub{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;margin-top:5px;opacity:.45;}
+.section-tab.part .section-tab-sub{color:var(--part);}
 .section-tab.pro .section-tab-sub{color:#a78bfa;}
 .section-tab-line{flex:1;height:1px;min-width:8px;}
 .section-tab.part .section-tab-line{background:linear-gradient(90deg,rgba(0,180,204,.4),transparent);}
@@ -70,9 +69,9 @@ padding:0 14px;width:100%;
 /* CATEGORY */
 .category{margin-bottom:30px;animation:fadeUp .6s ease both;}
 .category-header{margin-bottom:10px;}
-.category-header h3{font-family:‘DM Mono’,monospace;font-size:10px;font-weight:500;color:var(–muted);text-transform:uppercase;letter-spacing:.15em;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-.soon-badge{font-family:‘DM Mono’,monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;border-radius:2px;}
-.part .soon-badge{color:var(–part);background:rgba(0,180,204,.12);border:1px solid rgba(0,180,204,.25);}
+.category-header h3{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.15em;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.soon-badge{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;border-radius:2px;}
+.part .soon-badge{color:var(--part);background:rgba(0,180,204,.12);border:1px solid rgba(0,180,204,.25);}
 .pro .soon-badge{color:#a78bfa;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.25);}
 .category-soon .category-header h3{opacity:.5;}
 .category-soon .grid{filter:blur(1.5px);pointer-events:none;}
@@ -84,96 +83,96 @@ padding:0 14px;width:100%;
 @media(min-width:1000px){.grid{grid-template-columns:repeat(4,1fr);}}
 
 /* CARDS */
-.card{background:var(–surface);border:1px solid var(–border);border-radius:10px;padding:15px 16px;position:relative;cursor:pointer;overflow:hidden;transition:border-color .25s,transform .25s,box-shadow .25s;user-select:none;display:flex;flex-direction:column;width:100%;}
-.card::before{content:’’;position:absolute;inset:0;border-radius:10px;opacity:0;transition:opacity .3s;pointer-events:none;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:15px 16px;position:relative;cursor:pointer;overflow:hidden;transition:border-color .25s,transform .25s,box-shadow .25s;user-select:none;display:flex;flex-direction:column;width:100%;}
+.card::before{content:'';position:absolute;inset:0;border-radius:10px;opacity:0;transition:opacity .3s;pointer-events:none;}
 .part .card::before{background:linear-gradient(135deg,rgba(0,229,255,.04),transparent);}
 .pro .card::before{background:linear-gradient(135deg,rgba(124,58,237,.06),transparent);}
 @media(hover:hover){
-.card:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.5);}
-.part .card:hover{border-color:rgba(0,229,255,.4);}
-.pro .card:hover{border-color:rgba(124,58,237,.45);}
-.card:hover::before{opacity:1;}
-.card:hover .card-cta{opacity:1;}
+  .card:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.5);}
+  .part .card:hover{border-color:rgba(0,229,255,.4);}
+  .pro .card:hover{border-color:rgba(124,58,237,.45);}
+  .card:hover::before{opacity:1;}
+  .card:hover .card-cta{opacity:1;}
 }
-.card-name{font-size:13px;font-weight:500;color:var(–text);margin-bottom:5px;line-height:1.35;}
-.card-desc{font-size:11px;color:var(–muted);line-height:1.5;margin-bottom:12px;flex:1;}
+.card-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:5px;line-height:1.35;}
+.card-desc{font-size:11px;color:var(--muted);line-height:1.5;margin-bottom:12px;flex:1;}
 .card-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;}
-.card-price{font-family:‘Syne’,sans-serif;font-size:16px;font-weight:700;white-space:nowrap;}
-.part .card-price{color:var(–part);}
+.card-price{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;white-space:nowrap;}
+.part .card-price{color:var(--part);}
 .pro .card-price{color:#a78bfa;}
-.card-cta{font-family:‘DM Mono’,monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(–muted);opacity:0;transition:opacity .2s;white-space:nowrap;}
+.card-cta{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);opacity:0;transition:opacity .2s;white-space:nowrap;}
 .card.featured{border-color:rgba(124,58,237,.5);background:linear-gradient(135deg,#111118,#150d25);}
-.badge{position:absolute;top:10px;right:10px;font-family:‘DM Mono’,monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:var(–pro);color:#fff;padding:2px 6px;border-radius:2px;}
+.badge{position:absolute;top:10px;right:10px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:var(--pro);color:#fff;padding:2px 6px;border-radius:2px;}
 .segment{margin-bottom:48px;}
-.divider{border:none;border-top:1px solid var(–border);margin:40px 0;}
+.divider{border:none;border-top:1px solid var(--border);margin:40px 0;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
 
 /* FOOTER */
-.site-footer{border-top:1px solid var(–border);padding:24px 14px;position:relative;z-index:1;width:100%;}
+.site-footer{border-top:1px solid var(--border);padding:24px 14px;position:relative;z-index:1;width:100%;}
 .site-footer-inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:14px;align-items:center;}
 @media(min-width:600px){.site-footer-inner{flex-direction:row;justify-content:space-between;}}
-.footer-brand{font-family:‘DM Mono’,monospace;font-size:10px;color:var(–muted);letter-spacing:.08em;opacity:.55;text-align:center;}
+.footer-brand{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.08em;opacity:.55;text-align:center;}
 .footer-links{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
-.footer-link{font-family:‘DM Mono’,monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(–muted);background:none;border:none;cursor:pointer;text-decoration:underline;text-decoration-color:var(–border2);transition:color .2s;padding:0;}
-.footer-link:hover{color:var(–text);}
+.footer-link{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:none;border:none;cursor:pointer;text-decoration:underline;text-decoration-color:var(--border2);transition:color .2s;padding:0;}
+.footer-link:hover{color:var(--text);}
 
 /* ═══════════════════════════
-BOOKING MODAL
+   BOOKING MODAL
 ═══════════════════════════ */
 .overlay{
-position:fixed;inset:0;
-background:rgba(6,6,12,.88);
-backdrop-filter:blur(10px);
-z-index:200;
-display:flex;align-items:flex-end;justify-content:center;
-opacity:0;pointer-events:none;
-transition:opacity .3s;
-overflow:hidden;
+  position:fixed;inset:0;
+  background:rgba(6,6,12,.88);
+  backdrop-filter:blur(10px);
+  z-index:200;
+  display:flex;align-items:flex-end;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .3s;
+  overflow:hidden;
 }
 @media(min-width:640px){.overlay{align-items:center;padding:20px;}}
 .overlay.open{opacity:1;pointer-events:all;}
 
 .modal{
-background:var(–surface2);
-border:1px solid var(–border2);
-border-radius:20px 20px 0 0;
-width:100%;max-width:100%;
-position:relative;
-transform:translateY(100%);
-transition:transform .4s cubic-bezier(.32,1,.55,1);
-max-height:92vh;
-display:flex;flex-direction:column;
-overflow:hidden;
+  background:var(--surface2);
+  border:1px solid var(--border2);
+  border-radius:20px 20px 0 0;
+  width:100%;max-width:100%;
+  position:relative;
+  transform:translateY(100%);
+  transition:transform .4s cubic-bezier(.32,1,.55,1);
+  max-height:92vh;
+  display:flex;flex-direction:column;
+  overflow:hidden;
 }
 @media(min-width:640px){
-.modal{border-radius:16px;max-width:580px;transform:translateY(30px);max-height:90vh;}
+  .modal{border-radius:16px;max-width:580px;transform:translateY(30px);max-height:90vh;}
 }
 .overlay.open .modal{transform:translateY(0);}
 
-.modal-handle{width:40px;height:4px;background:var(–border2);border-radius:2px;margin:14px auto 0;flex-shrink:0;}
+.modal-handle{width:40px;height:4px;background:var(--border2);border-radius:2px;margin:14px auto 0;flex-shrink:0;}
 @media(min-width:640px){.modal-handle{display:none;}}
 
-.modal-close{position:absolute;top:12px;right:12px;background:var(–border);border:none;color:var(–muted);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;z-index:10;flex-shrink:0;}
-.modal-close:hover{background:var(–border2);color:var(–text);}
+.modal-close{position:absolute;top:12px;right:12px;background:var(--border);border:none;color:var(--muted);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;z-index:10;flex-shrink:0;}
+.modal-close:hover{background:var(--border2);color:var(--text);}
 
 /* Step tabs */
-.modal-tabs{display:flex;border-bottom:1px solid var(–border);flex-shrink:0;overflow-x:auto;scrollbar-width:none;}
+.modal-tabs{display:flex;border-bottom:1px solid var(--border);flex-shrink:0;overflow-x:auto;scrollbar-width:none;}
 .modal-tabs::-webkit-scrollbar{display:none;}
-.modal-tab{font-family:‘DM Mono’,monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:11px 10px;color:var(–muted);border-bottom:2px solid transparent;white-space:nowrap;flex:1;text-align:center;transition:color .2s,border-color .2s;}
-.modal-tab.active{color:var(–text);border-bottom-color:var(–accent);}
-.modal-tab.done{color:var(–success);}
+.modal-tab{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:11px 10px;color:var(--muted);border-bottom:2px solid transparent;white-space:nowrap;flex:1;text-align:center;transition:color .2s,border-color .2s;}
+.modal-tab.active{color:var(--text);border-bottom-color:var(--accent);}
+.modal-tab.done{color:var(--success);}
 
 .modal-body{padding:18px 16px 20px;overflow-y:auto;flex:1;-webkit-overflow-scrolling:touch;}
 @media(min-width:640px){.modal-body{padding:24px 28px 28px;}}
 
 /* Service header inside modal */
-.modal-svc-header{margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(–border);}
-.modal-tag{display:inline-block;font-family:‘DM Mono’,monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px;padding:3px 9px;border-radius:2px;}
-.modal-tag.part{color:var(–part);background:rgba(0,180,204,.1);border:1px solid rgba(0,180,204,.2);}
+.modal-svc-header{margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+.modal-tag{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px;padding:3px 9px;border-radius:2px;}
+.modal-tag.part{color:var(--part);background:rgba(0,180,204,.1);border:1px solid rgba(0,180,204,.2);}
 .modal-tag.pro{color:#a78bfa;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.2);}
-.modal-svc-title{font-family:‘Syne’,sans-serif;font-size:clamp(1rem,4vw,1.45rem);font-weight:800;line-height:1.1;color:#fff;padding-right:32px;margin-bottom:4px;}
-.modal-svc-price{font-family:‘Syne’,sans-serif;font-size:.95rem;font-weight:700;}
-.modal-svc-price.part{color:var(–part);}
+.modal-svc-title{font-family:'Syne',sans-serif;font-size:clamp(1rem,4vw,1.45rem);font-weight:800;line-height:1.1;color:#fff;padding-right:32px;margin-bottom:4px;}
+.modal-svc-price{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;}
+.modal-svc-price.part{color:var(--part);}
 .modal-svc-price.pro{color:#a78bfa;}
 
 /* Step panels */
@@ -184,127 +183,126 @@ overflow:hidden;
 .svc-desc{font-size:13px;line-height:1.75;color:#c0c0d0;margin-bottom:14px;}
 .inc-list{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
 .inc-list li{font-size:12px;color:#c0c0d0;display:flex;align-items:flex-start;gap:8px;line-height:1.5;}
-.inc-list li::before{content:‘→’;font-family:‘DM Mono’,monospace;font-size:11px;flex-shrink:0;margin-top:1px;}
-.inc-list.part li::before{color:var(–part);}
+.inc-list li::before{content:'→';font-family:'DM Mono',monospace;font-size:11px;flex-shrink:0;margin-top:1px;}
+.inc-list.part li::before{color:var(--part);}
 .inc-list.pro li::before{color:#a78bfa;}
-.ideal-box{background:var(–surface);border:1px solid var(–border);border-radius:8px;padding:11px 13px;font-size:12px;color:var(–muted);line-height:1.65;}
-.ideal-box strong{color:var(–text);font-weight:500;}
+.ideal-box{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:11px 13px;font-size:12px;color:var(--muted);line-height:1.65;}
+.ideal-box strong{color:var(--text);font-weight:500;}
 
 /* Calendar */
 .cal-month-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
-.cal-month-label{font-family:‘Syne’,sans-serif;font-size:.95rem;font-weight:700;color:#fff;}
-.cal-nav-btn{background:var(–surface);border:1px solid var(–border);color:var(–muted);width:30px;height:30px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:color .2s;}
-.cal-nav-btn:hover{color:var(–text);}
+.cal-month-label{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;color:#fff;}
+.cal-nav-btn{background:var(--surface);border:1px solid var(--border);color:var(--muted);width:30px;height:30px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:color .2s;}
+.cal-nav-btn:hover{color:var(--text);}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;width:100%;}
-.cal-day-name{font-family:‘DM Mono’,monospace;font-size:8px;letter-spacing:.06em;text-transform:uppercase;color:var(–muted);text-align:center;padding:3px 0;}
-.cal-day{aspect-ratio:1;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;cursor:default;color:var(–muted);background:transparent;border:1px solid transparent;transition:background .15s,color .15s,border-color .15s;min-width:0;}
+.cal-day-name{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center;padding:3px 0;}
+.cal-day{aspect-ratio:1;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;cursor:default;color:var(--muted);background:transparent;border:1px solid transparent;transition:background .15s,color .15s,border-color .15s;min-width:0;}
 .cal-day.past,.cal-day.unavailable{opacity:.25;}
-.cal-day.available{color:var(–text);cursor:pointer;}
-.cal-day.available:hover{background:var(–surface);border-color:var(–border2);}
+.cal-day.available{color:var(--text);cursor:pointer;}
+.cal-day.available:hover{background:var(--surface);border-color:var(--border2);}
 .cal-day.selected{font-weight:700;}
-.part .cal-day.selected{background:var(–part)!important;border-color:var(–part)!important;color:#000!important;}
-.pro .cal-day.selected{background:var(–pro)!important;border-color:var(–pro)!important;color:#fff!important;}
+.part .cal-day.selected{background:var(--part)!important;border-color:var(--part)!important;color:#000!important;}
+.pro .cal-day.selected{background:var(--pro)!important;border-color:var(--pro)!important;color:#fff!important;}
 
 /* Time slots */
 .time-section{margin-top:14px;}
-.time-label{font-family:‘DM Mono’,monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(–muted);margin-bottom:8px;}
+.time-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
 .time-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;}
 @media(min-width:380px){.time-grid{grid-template-columns:repeat(4,1fr);}}
 @media(min-width:480px){.time-grid{grid-template-columns:repeat(5,1fr);}}
-.time-slot{background:var(–surface);border:1px solid var(–border);border-radius:7px;padding:9px 4px;text-align:center;font-family:‘DM Mono’,monospace;font-size:11px;color:var(–text);cursor:pointer;transition:background .15s,border-color .15s,color .15s;}
-.time-slot:hover{border-color:var(–border2);}
+.time-slot{background:var(--surface);border:1px solid var(--border);border-radius:7px;padding:9px 4px;text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:var(--text);cursor:pointer;transition:background .15s,border-color .15s,color .15s;}
+.time-slot:hover{border-color:var(--border2);}
 .time-slot.selected{font-weight:500;}
-.part .time-slot.selected{background:rgba(0,180,204,.15);border-color:var(–part);color:var(–part);}
+.part .time-slot.selected{background:rgba(0,180,204,.15);border-color:var(--part);color:var(--part);}
 .pro .time-slot.selected{background:rgba(124,58,237,.15);border-color:#a78bfa;color:#a78bfa;}
-.no-date-hint{font-family:‘DM Mono’,monospace;font-size:10px;color:var(–muted);text-align:center;padding:18px;letter-spacing:.06em;}
+.no-date-hint{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);text-align:center;padding:18px;letter-spacing:.06em;}
 
 /* Price adjuster (step 1) */
-.price-adjuster{background:var(–surface);border:1px solid var(–border);border-radius:10px;padding:14px;margin-top:14px;display:flex;flex-direction:column;gap:10px;}
+.price-adjuster{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;margin-top:14px;display:flex;flex-direction:column;gap:10px;}
 .adj-row{display:flex;align-items:center;justify-content:space-between;gap:10px;}
-.adj-label{font-size:13px;color:var(–text);flex:1;}
-.adj-sub{font-size:11px;color:var(–muted);}
+.adj-label{font-size:13px;color:var(--text);flex:1;}
+.adj-sub{font-size:11px;color:var(--muted);}
 .adj-ctrl{display:flex;align-items:center;gap:8px;}
-.adj-btn{width:28px;height:28px;border-radius:6px;border:1px solid var(–border2);background:var(–surface2);color:var(–text);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s;flex-shrink:0;}
-.adj-btn:hover{background:var(–border);border-color:var(–border2);}
-.adj-val{font-family:‘Syne’,sans-serif;font-size:14px;font-weight:700;min-width:22px;text-align:center;}
+.adj-btn{width:28px;height:28px;border-radius:6px;border:1px solid var(--border2);background:var(--surface2);color:var(--text);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s,border-color .15s;flex-shrink:0;}
+.adj-btn:hover{background:var(--border);border-color:var(--border2);}
+.adj-val{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;min-width:22px;text-align:center;}
 .adj-toggle{display:flex;align-items:center;gap:10px;}
-.toggle-switch{width:40px;height:22px;border-radius:11px;background:var(–border);border:none;position:relative;cursor:pointer;transition:background .2s;flex-shrink:0;}
-.toggle-switch.on{background:var(–part);}
-.pro-modal .toggle-switch.on{background:var(–pro);}
+.toggle-switch{width:40px;height:22px;border-radius:11px;background:var(--border);border:none;position:relative;cursor:pointer;transition:background .2s;flex-shrink:0;}
+.toggle-switch.on{background:var(--part);}
+.pro-modal .toggle-switch.on{background:var(--pro);}
 .toggle-knob{position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .2s;}
 .toggle-switch.on .toggle-knob{transform:translateX(18px);}
-.price-total{font-family:‘Syne’,sans-serif;font-size:1.1rem;font-weight:800;padding-top:10px;border-top:1px solid var(–border);}
-.part .price-total{color:var(–part);}
+.price-total{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;padding-top:10px;border-top:1px solid var(--border);}
+.part .price-total{color:var(--part);}
 .pro .price-total{color:#a78bfa;}
 
 /* Payment step */
-.pay-box{background:var(–surface);border:1px solid var(–border);border-radius:12px;padding:18px;margin-bottom:16px;text-align:center;}
-.pay-amount{font-family:‘Syne’,sans-serif;font-size:2.2rem;font-weight:800;margin-bottom:4px;}
-.part .pay-amount{color:var(–part);}
+.pay-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:16px;text-align:center;}
+.pay-amount{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;margin-bottom:4px;}
+.part .pay-amount{color:var(--part);}
 .pro .pay-amount{color:#a78bfa;}
-.pay-desc{font-size:12px;color:var(–muted);line-height:1.6;}
-.pay-note{font-size:11px;color:var(–muted);background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:8px;padding:10px 12px;margin-top:12px;line-height:1.6;}
+.pay-desc{font-size:12px;color:var(--muted);line-height:1.6;}
+.pay-note{font-size:11px;color:var(--muted);background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.2);border-radius:8px;padding:10px 12px;margin-top:12px;line-height:1.6;}
 
 /* Forms */
 .form-group{margin-bottom:13px;}
-.form-label{font-family:‘DM Mono’,monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(–muted);margin-bottom:5px;display:block;}
-.form-label .req{color:var(–accent);}
-.form-input,.form-textarea{width:100%;background:var(–surface);border:1px solid var(–border);border-radius:8px;color:var(–text);font-family:‘DM Sans’,sans-serif;font-size:13px;font-weight:300;padding:10px 12px;outline:none;transition:border-color .2s;-webkit-appearance:none;}
-.form-input:focus,.form-textarea:focus{border-color:var(–accent);}
+.form-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;display:block;}
+.form-label .req{color:var(--accent);}
+.form-input,.form-textarea{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;padding:10px 12px;outline:none;transition:border-color .2s;-webkit-appearance:none;}
+.form-input:focus,.form-textarea:focus{border-color:var(--accent);}
 .form-textarea{resize:vertical;min-height:75px;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
 
 /* Summary */
-.summary-box{background:var(–surface);border:1px solid var(–border);border-radius:10px;padding:14px;margin-bottom:16px;}
-.summary-title{font-family:‘DM Mono’,monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(–muted);margin-bottom:10px;}
-.summary-row{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;font-size:12px;padding:5px 0;border-bottom:1px solid var(–border);}
+.summary-box{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:16px;}
+.summary-title{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+.summary-row{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;font-size:12px;padding:5px 0;border-bottom:1px solid var(--border);}
 .summary-row:last-child{border-bottom:none;}
-.summary-key{color:var(–muted);flex-shrink:0;}
-.summary-val{color:var(–text);font-weight:500;text-align:right;word-break:break-word;}
+.summary-key{color:var(--muted);flex-shrink:0;}
+.summary-val{color:var(--text);font-weight:500;text-align:right;word-break:break-word;}
 
 /* Buttons */
-.modal-nav{display:flex;gap:9px;margin-top:18px;padding-top:14px;border-top:1px solid var(–border);}
-.btn{font-family:‘Syne’,sans-serif;font-size:13px;font-weight:700;padding:12px 16px;border-radius:9px;border:none;cursor:pointer;transition:opacity .2s,transform .15s;flex:1;display:flex;align-items:center;justify-content:center;gap:7px;text-decoration:none;line-height:1;}
+.modal-nav{display:flex;gap:9px;margin-top:18px;padding-top:14px;border-top:1px solid var(--border);}
+.btn{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;padding:12px 16px;border-radius:9px;border:none;cursor:pointer;transition:opacity .2s,transform .15s;flex:1;display:flex;align-items:center;justify-content:center;gap:7px;text-decoration:none;line-height:1;}
 .btn:hover{opacity:.88;transform:translateY(-1px);}
 .btn:active{transform:translateY(0);}
-.btn-back{background:var(–surface);border:1px solid var(–border);color:var(–muted);flex:0 0 auto;padding:12px 13px;}
-.btn-part{background:var(–part);color:#000;}
-.btn-pro{background:var(–pro);color:#fff;}
+.btn-back{background:var(--surface);border:1px solid var(--border);color:var(--muted);flex:0 0 auto;padding:12px 13px;}
+.btn-part{background:var(--part);color:#000;}
+.btn-pro{background:var(--pro);color:#fff;}
 .btn-pay{background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;}
 .btn-wa{background:#25D366;color:#fff;}
 .btn-dim{opacity:.3;pointer-events:none !important;}
 
 /* ═══════════════════════════
-LEGAL MODAL
+   LEGAL MODAL
 ═══════════════════════════ */
 .legal-overlay{position:fixed;inset:0;background:rgba(6,6,12,.92);backdrop-filter:blur(12px);z-index:300;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;overflow:hidden;}
 @media(min-width:600px){.legal-overlay{align-items:center;padding:20px;}}
 .legal-overlay.open{opacity:1;pointer-events:all;}
-.legal-modal{background:var(–surface2);border:1px solid var(–border2);border-radius:20px 20px 0 0;width:100%;max-width:100%;padding:18px 16px 36px;position:relative;transform:translateY(100%);transition:transform .4s cubic-bezier(.32,1,.55,1);max-height:92vh;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.legal-modal{background:var(--surface2);border:1px solid var(--border2);border-radius:20px 20px 0 0;width:100%;max-width:100%;padding:18px 16px 36px;position:relative;transform:translateY(100%);transition:transform .4s cubic-bezier(.32,1,.55,1);max-height:92vh;overflow-y:auto;-webkit-overflow-scrolling:touch;}
 @media(min-width:600px){.legal-modal{border-radius:16px;max-width:680px;padding:36px;transform:translateY(30px);max-height:88vh;}}
 .legal-overlay.open .legal-modal{transform:translateY(0);}
-.legal-handle{width:40px;height:4px;background:var(–border2);border-radius:2px;margin:0 auto 16px;}
+.legal-handle{width:40px;height:4px;background:var(--border2);border-radius:2px;margin:0 auto 16px;}
 @media(min-width:600px){.legal-handle{display:none;}}
-.legal-close{position:absolute;top:12px;right:12px;background:var(–border);border:none;color:var(–muted);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;}
-.legal-close:hover{background:var(–border2);color:var(–text);}
-.legal-tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:20px;border-bottom:1px solid var(–border);padding-bottom:12px;}
-.legal-tab-btn{font-family:‘DM Mono’,monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:5px 9px;border-radius:4px;background:var(–surface);border:1px solid var(–border);color:var(–muted);cursor:pointer;transition:background .2s,color .2s;white-space:nowrap;}
-.legal-tab-btn.active{background:rgba(0,229,255,.1);border-color:rgba(0,229,255,.35);color:var(–accent);}
+.legal-close{position:absolute;top:12px;right:12px;background:var(--border);border:none;color:var(--muted);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;}
+.legal-close:hover{background:var(--border2);color:var(--text);}
+.legal-tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:20px;border-bottom:1px solid var(--border);padding-bottom:12px;}
+.legal-tab-btn{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:5px 9px;border-radius:4px;background:var(--surface);border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:background .2s,color .2s;white-space:nowrap;}
+.legal-tab-btn.active{background:rgba(0,229,255,.1);border-color:rgba(0,229,255,.35);color:var(--accent);}
 .legal-tab-content{display:none;}
 .legal-tab-content.active{display:block;}
-.legal-title{font-family:‘Syne’,sans-serif;font-size:1.15rem;font-weight:800;color:#fff;margin-bottom:16px;padding-right:32px;}
+.legal-title{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:800;color:#fff;margin-bottom:16px;padding-right:32px;}
 .legal-section{margin-bottom:18px;}
-.legal-section h3{font-family:‘Syne’,sans-serif;font-size:.88rem;font-weight:700;color:var(–accent);margin-bottom:7px;}
+.legal-section h3{font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;color:var(--accent);margin-bottom:7px;}
 .legal-section p{font-size:12px;line-height:1.75;color:#c0c0d0;margin-bottom:5px;}
 .legal-section ul{list-style:none;display:flex;flex-direction:column;gap:5px;}
 .legal-section ul li{font-size:12px;color:#c0c0d0;display:flex;align-items:flex-start;gap:7px;line-height:1.5;}
-.legal-section ul li::before{content:’·’;color:var(–accent);font-weight:700;flex-shrink:0;}
-.legal-divider{border:none;border-top:1px solid var(–border);margin:14px 0;}
-.legal-contact-box{background:var(–surface);border:1px solid var(–border);border-radius:8px;padding:11px 13px;font-size:12px;color:var(–muted);line-height:1.7;margin-top:6px;}
-.legal-contact-box strong{color:var(–text);}
-.legal-contact-box a{color:var(–accent);text-decoration:none;}
+.legal-section ul li::before{content:'·';color:var(--accent);font-weight:700;flex-shrink:0;}
+.legal-divider{border:none;border-top:1px solid var(--border);margin:14px 0;}
+.legal-contact-box{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:11px 13px;font-size:12px;color:var(--muted);line-height:1.7;margin-top:6px;}
+.legal-contact-box strong{color:var(--text);}
+.legal-contact-box a{color:var(--accent);text-decoration:none;}
 </style>
-
 </head>
 <body>
 
@@ -320,7 +318,6 @@ LEGAL MODAL
 <main class="page-wrapper">
 
   <!-- ══════════ PARTICULIERS ══════════ -->
-
   <div class="segment part">
     <div class="section-tab part">
       <div class="section-tab-inner">
@@ -333,48 +330,44 @@ LEGAL MODAL
       </div>
     </div>
 
-```
-<div class="category">
-  <div class="category-header"><h3>🚨 Diagnostic &amp; Dépannage</h3></div>
-  <div class="grid">
-    <div class="card" onclick="openModal('diag-part')"><div class="card-name">Diagnostic initial</div><div class="card-desc">Identification rapide du problème</div><div class="card-footer"><div class="card-price">30€</div><span class="card-cta">Réserver →</span></div></div>
-    <div class="card" onclick="openModal('depannage-part')"><div class="card-name">Dépannage</div><div class="card-desc">Réparation et résolution de panne</div><div class="card-footer"><div class="card-price">60€/h</div><span class="card-cta">Réserver →</span></div></div>
-    <div class="card" onclick="openModal('recup-data')"><div class="card-name">Récupération de données</div><div class="card-desc">Restauration de fichiers importants</div><div class="card-footer"><div class="card-price">90€</div><span class="card-cta">Réserver →</span></div></div>
-  </div>
-</div>
+    <div class="category">
+      <div class="category-header"><h3>🚨 Diagnostic &amp; Dépannage</h3></div>
+      <div class="grid">
+        <div class="card" onclick="openModal('diag-part')"><div class="card-name">Diagnostic initial</div><div class="card-desc">Identification rapide du problème</div><div class="card-footer"><div class="card-price">30€</div><span class="card-cta">Réserver →</span></div></div>
+        <div class="card" onclick="openModal('depannage-part')"><div class="card-name">Dépannage</div><div class="card-desc">Réparation et résolution de panne</div><div class="card-footer"><div class="card-price">60€/h</div><span class="card-cta">Réserver →</span></div></div>
+        <div class="card" onclick="openModal('recup-data')"><div class="card-name">Récupération de données</div><div class="card-desc">Restauration de fichiers importants</div><div class="card-footer"><div class="card-price">90€</div><span class="card-cta">Réserver →</span></div></div>
+      </div>
+    </div>
 
-<div class="category">
-  <div class="category-header"><h3>🛠️ Installation &amp; Migration</h3></div>
-  <div class="grid">
-    <div class="card" onclick="openModal('install-os')"><div class="card-name">Installation système (OS)</div><div class="card-desc">Donnez une seconde vie à votre PC</div><div class="card-footer"><div class="card-price">70€</div><span class="card-cta">Réserver →</span></div></div>
-    <div class="card" onclick="openModal('prep-pc')"><div class="card-name">Préparation PC neuf</div><div class="card-desc">Configuration et optimisation dès le départ</div><div class="card-footer"><div class="card-price">70€</div><span class="card-cta">Réserver →</span></div></div>
-    <div class="card" onclick="openModal('migration')"><div class="card-name">Migration / Clonage disque</div><div class="card-desc">Passez à un SSD sans perte de données</div><div class="card-footer"><div class="card-price">100€</div><span class="card-cta">Réserver →</span></div></div>
-  </div>
-</div>
+    <div class="category">
+      <div class="category-header"><h3>🛠️ Installation &amp; Migration</h3></div>
+      <div class="grid">
+        <div class="card" onclick="openModal('install-os')"><div class="card-name">Installation système (OS)</div><div class="card-desc">Donnez une seconde vie à votre PC</div><div class="card-footer"><div class="card-price">70€</div><span class="card-cta">Réserver →</span></div></div>
+        <div class="card" onclick="openModal('prep-pc')"><div class="card-name">Préparation PC neuf</div><div class="card-desc">Configuration et optimisation dès le départ</div><div class="card-footer"><div class="card-price">70€</div><span class="card-cta">Réserver →</span></div></div>
+        <div class="card" onclick="openModal('migration')"><div class="card-name">Migration / Clonage disque</div><div class="card-desc">Passez à un SSD sans perte de données</div><div class="card-footer"><div class="card-price">100€</div><span class="card-cta">Réserver →</span></div></div>
+      </div>
+    </div>
 
-<div class="category">
-  <div class="category-header"><h3>🔐 Sécurité &amp; Protection</h3></div>
-  <div class="grid">
-    <div class="card" onclick="openModal('secu-poste')"><div class="card-name">Sécurisation poste de travail</div><div class="card-desc">Protection complète de votre PC</div><div class="card-footer"><div class="card-price">90€</div><span class="card-cta">Réserver →</span></div></div>
-    <div class="card" onclick="openModal('backup-part')"><div class="card-name">Sauvegardes personnalisées</div><div class="card-desc">Protection de vos fichiers importants</div><div class="card-footer"><div class="card-price">90€</div><span class="card-cta">Réserver →</span></div></div>
-  </div>
-</div>
+    <div class="category">
+      <div class="category-header"><h3>🔐 Sécurité &amp; Protection</h3></div>
+      <div class="grid">
+        <div class="card" onclick="openModal('secu-poste')"><div class="card-name">Sécurisation poste de travail</div><div class="card-desc">Protection complète de votre PC</div><div class="card-footer"><div class="card-price">90€</div><span class="card-cta">Réserver →</span></div></div>
+        <div class="card" onclick="openModal('backup-part')"><div class="card-name">Sauvegardes personnalisées</div><div class="card-desc">Protection de vos fichiers importants</div><div class="card-footer"><div class="card-price">90€</div><span class="card-cta">Réserver →</span></div></div>
+      </div>
+    </div>
 
-<div class="category category-soon part">
-  <div class="category-header"><h3>🎓 Accompagnement <span class="soon-badge">⏳ Bientôt</span></h3></div>
-  <div class="grid">
-    <div class="card"><div class="card-name">Coaching numérique</div><div class="card-desc">Aide personnalisée à votre rythme</div><div class="card-footer"><div class="card-price">60€</div></div></div>
-    <div class="card"><div class="card-name">Sensibilisation cybersécurité</div><div class="card-desc">Comprendre et éviter les risques</div><div class="card-footer"><div class="card-price">90€</div></div></div>
-  </div>
-</div>
-```
-
+    <div class="category category-soon part">
+      <div class="category-header"><h3>🎓 Accompagnement <span class="soon-badge">⏳ Bientôt</span></h3></div>
+      <div class="grid">
+        <div class="card"><div class="card-name">Coaching numérique</div><div class="card-desc">Aide personnalisée à votre rythme</div><div class="card-footer"><div class="card-price">60€</div></div></div>
+        <div class="card"><div class="card-name">Sensibilisation cybersécurité</div><div class="card-desc">Comprendre et éviter les risques</div><div class="card-footer"><div class="card-price">90€</div></div></div>
+      </div>
+    </div>
   </div>
 
   <hr class="divider">
 
   <!-- ══════════ PROFESSIONNELS ══════════ -->
-
   <div class="segment pro">
     <div class="section-tab pro">
       <div class="section-tab-inner">
@@ -387,50 +380,47 @@ LEGAL MODAL
       </div>
     </div>
 
-```
-<!-- 1. Abonnements -->
-<div class="category">
-  <div class="category-header"><h3>🔵 Abonnements</h3></div>
-  <div class="grid">
-    <div class="card" onclick="openModal('soc')"><div class="card-name">Cyber Monitoring (SOC)</div><div class="card-desc">Surveillance continue 24h/24 7j/7</div><div class="card-footer"><div class="card-price">79€/mois</div><span class="card-cta">Réserver →</span></div></div>
-    <div class="card" onclick="openModal('support-mensuel')"><div class="card-name">Support Mensuel</div><div class="card-desc">Assistance technique continue</div><div class="card-footer"><div class="card-price">70€/mois</div><span class="card-cta">Réserver →</span></div></div>
-    <div class="card" onclick="openModal('maintenance')"><div class="card-name">Maintenance Mensuelle</div><div class="card-desc">Entretien et optimisation de vos postes</div><div class="card-footer"><div class="card-price">60€/mois · /PC</div><span class="card-cta">Réserver →</span></div></div>
-    <div class="card featured" onclick="openModal('secu-complete')"><div class="badge">⭐ Best</div><div class="card-name">Sécurité Complète</div><div class="card-desc">Maintenance + support + cybersécurité</div><div class="card-footer"><div class="card-price">129€/mois</div><span class="card-cta">Réserver →</span></div></div>
-  </div>
-</div>
+    <!-- 1. Abonnements -->
+    <div class="category">
+      <div class="category-header"><h3>🔵 Abonnements</h3></div>
+      <div class="grid">
+        <div class="card" onclick="openModal('soc')"><div class="card-name">Cyber Monitoring (SOC)</div><div class="card-desc">Surveillance continue 24h/24 7j/7</div><div class="card-footer"><div class="card-price">79€/mois</div><span class="card-cta">Réserver →</span></div></div>
+        <div class="card" onclick="openModal('support-mensuel')"><div class="card-name">Support Mensuel</div><div class="card-desc">Assistance technique continue</div><div class="card-footer"><div class="card-price">70€/mois</div><span class="card-cta">Réserver →</span></div></div>
+        <div class="card" onclick="openModal('maintenance')"><div class="card-name">Maintenance Mensuelle</div><div class="card-desc">Entretien et optimisation de vos postes</div><div class="card-footer"><div class="card-price">60€/mois · /PC</div><span class="card-cta">Réserver →</span></div></div>
+        <div class="card featured" onclick="openModal('secu-complete')"><div class="badge">⭐ Best</div><div class="card-name">Sécurité Complète</div><div class="card-desc">Maintenance + support + cybersécurité</div><div class="card-footer"><div class="card-price">129€/mois</div><span class="card-cta">Réserver →</span></div></div>
+      </div>
+    </div>
 
-<!-- 2. Cybersécurité -->
-<div class="category">
-  <div class="category-header"><h3>🛡️ Cybersécurité</h3></div>
-  <div class="grid">
-    <div class="card" onclick="openModal('audit')"><div class="card-name">Audit santé numérique</div><div class="card-desc">Analyse complète et priorisée des risques</div><div class="card-footer"><div class="card-price">150€</div><span class="card-cta">Réserver →</span></div></div>
-    <div class="card" onclick="openModal('remediation')"><div class="card-name">Remédiation &amp; Sécurisation</div><div class="card-desc">Correction des failles et renforcement</div><div class="card-footer"><div class="card-price">120€</div><span class="card-cta">Réserver →</span></div></div>
-    <div class="card" onclick="openModal('teletravail')"><div class="card-name">Pack Poste Télétravail</div><div class="card-desc">Environnement sécurisé à distance</div><div class="card-footer"><div class="card-price">120€</div><span class="card-cta">Réserver →</span></div></div>
-    <div class="card" onclick="openModal('backup-pro')"><div class="card-name">Sauvegardes personnalisées</div><div class="card-desc">Protection des données professionnelles</div><div class="card-footer"><div class="card-price">90€</div><span class="card-cta">Réserver →</span></div></div>
-  </div>
-</div>
+    <!-- 2. Cybersécurité -->
+    <div class="category">
+      <div class="category-header"><h3>🛡️ Cybersécurité</h3></div>
+      <div class="grid">
+        <div class="card" onclick="openModal('audit')"><div class="card-name">Audit santé numérique</div><div class="card-desc">Analyse complète et priorisée des risques</div><div class="card-footer"><div class="card-price">150€</div><span class="card-cta">Réserver →</span></div></div>
+        <div class="card" onclick="openModal('remediation')"><div class="card-name">Remédiation &amp; Sécurisation</div><div class="card-desc">Correction des failles et renforcement</div><div class="card-footer"><div class="card-price">120€</div><span class="card-cta">Réserver →</span></div></div>
+        <div class="card" onclick="openModal('teletravail')"><div class="card-name">Pack Poste Télétravail</div><div class="card-desc">Environnement sécurisé à distance</div><div class="card-footer"><div class="card-price">120€</div><span class="card-cta">Réserver →</span></div></div>
+        <div class="card" onclick="openModal('backup-pro')"><div class="card-name">Sauvegardes personnalisées</div><div class="card-desc">Protection des données professionnelles</div><div class="card-footer"><div class="card-price">90€</div><span class="card-cta">Réserver →</span></div></div>
+      </div>
+    </div>
 
-<!-- 3. Réseau -->
-<div class="category">
-  <div class="category-header"><h3>🌐 Réseau &amp; Infrastructure</h3></div>
-  <div class="grid">
-    <div class="card" onclick="openModal('reseau-install')"><div class="card-name">Installation &amp; Configuration réseau</div><div class="card-desc">150€ / 1 poste · +20€ par poste supplémentaire</div><div class="card-footer"><div class="card-price">à partir de 150€</div><span class="card-cta">Réserver →</span></div></div>
-    <div class="card" onclick="openModal('admin-reseau')"><div class="card-name">Administration réseau</div><div class="card-desc">50€/mois / 1 poste · +20€ par poste supp.</div><div class="card-footer"><div class="card-price">à partir de 50€/mois</div><span class="card-cta">Réserver →</span></div></div>
-    <div class="card" onclick="openModal('diag-pro')"><div class="card-name">Diagnostic initial</div><div class="card-desc">Identification rapide du problème</div><div class="card-footer"><div class="card-price">30€</div><span class="card-cta">Réserver →</span></div></div>
-    <div class="card" onclick="openModal('depannage-pro')"><div class="card-name">Dépannage</div><div class="card-desc">Réparation et résolution de panne</div><div class="card-footer"><div class="card-price">60€/h</div><span class="card-cta">Réserver →</span></div></div>
-    <div class="card" onclick="openModal('recup-pro')"><div class="card-name">Récupération de données</div><div class="card-desc">Restauration de données critiques</div><div class="card-footer"><div class="card-price">90€</div><span class="card-cta">Réserver →</span></div></div>
-  </div>
-</div>
+    <!-- 3. Réseau -->
+    <div class="category">
+      <div class="category-header"><h3>🌐 Réseau &amp; Infrastructure</h3></div>
+      <div class="grid">
+        <div class="card" onclick="openModal('reseau-install')"><div class="card-name">Installation &amp; Configuration réseau</div><div class="card-desc">150€ / 1 poste · +20€ par poste supplémentaire</div><div class="card-footer"><div class="card-price">à partir de 150€</div><span class="card-cta">Réserver →</span></div></div>
+        <div class="card" onclick="openModal('admin-reseau')"><div class="card-name">Administration réseau</div><div class="card-desc">50€/mois / 1 poste · +20€ par poste supp.</div><div class="card-footer"><div class="card-price">à partir de 50€/mois</div><span class="card-cta">Réserver →</span></div></div>
+        <div class="card" onclick="openModal('diag-pro')"><div class="card-name">Diagnostic initial</div><div class="card-desc">Identification rapide du problème</div><div class="card-footer"><div class="card-price">30€</div><span class="card-cta">Réserver →</span></div></div>
+        <div class="card" onclick="openModal('depannage-pro')"><div class="card-name">Dépannage</div><div class="card-desc">Réparation et résolution de panne</div><div class="card-footer"><div class="card-price">60€/h</div><span class="card-cta">Réserver →</span></div></div>
+        <div class="card" onclick="openModal('recup-pro')"><div class="card-name">Récupération de données</div><div class="card-desc">Restauration de données critiques</div><div class="card-footer"><div class="card-price">90€</div><span class="card-cta">Réserver →</span></div></div>
+      </div>
+    </div>
 
-<!-- 4. Formation Bientôt -->
-<div class="category category-soon pro">
-  <div class="category-header"><h3>🎓 Formation <span class="soon-badge">⏳ Bientôt</span></h3></div>
-  <div class="grid">
-    <div class="card"><div class="card-name">Formation cybersécurité</div><div class="card-desc">Sensibilisation aux risques pour équipes</div><div class="card-footer"><div class="card-price">200€</div></div></div>
-  </div>
-</div>
-```
-
+    <!-- 4. Formation Bientôt -->
+    <div class="category category-soon pro">
+      <div class="category-header"><h3>🎓 Formation <span class="soon-badge">⏳ Bientôt</span></h3></div>
+      <div class="grid">
+        <div class="card"><div class="card-name">Formation cybersécurité</div><div class="card-desc">Sensibilisation aux risques pour équipes</div><div class="card-footer"><div class="card-price">200€</div></div></div>
+      </div>
+    </div>
   </div>
 
 </main>
@@ -451,128 +441,123 @@ LEGAL MODAL
 <!-- ══════════════════════════════════
      BOOKING MODAL
 ══════════════════════════════════ -->
-
 <div class="overlay" id="overlay" onclick="handleOverlayClick(event)">
   <div class="modal" id="modal">
     <div class="modal-handle"></div>
     <button class="modal-close" onclick="closeModal()">✕</button>
 
-```
-<div class="modal-tabs" id="modalTabs">
-  <div class="modal-tab active" id="mtab0">① Service</div>
-  <div class="modal-tab" id="mtab1">② Créneau</div>
-  <div class="modal-tab" id="mtab2">③ Paiement</div>
-  <div class="modal-tab" id="mtab3">④ Informations</div>
-  <div class="modal-tab" id="mtab4">⑤ Confirmation</div>
-</div>
-
-<div class="modal-body" id="modalBody">
-  <div class="modal-svc-header" id="svcHeader"></div>
-
-  <!-- STEP 0 — Detail service -->
-  <div class="step-panel active" id="step0">
-    <div id="svcDetail"></div>
-    <div class="modal-nav">
-      <button class="btn" id="btnS0" onclick="goStep(1)">Choisir un créneau →</button>
+    <div class="modal-tabs" id="modalTabs">
+      <div class="modal-tab active" id="mtab0">① Service</div>
+      <div class="modal-tab" id="mtab1">② Créneau</div>
+      <div class="modal-tab" id="mtab2">③ Paiement</div>
+      <div class="modal-tab" id="mtab3">④ Informations</div>
+      <div class="modal-tab" id="mtab4">⑤ Confirmation</div>
     </div>
-  </div>
 
-  <!-- STEP 1 — Créneau + ajustement prix -->
-  <div class="step-panel" id="step1">
-    <div class="cal-month-nav">
-      <button class="cal-nav-btn" onclick="prevMonth()">‹</button>
-      <div class="cal-month-label" id="calLabel"></div>
-      <button class="cal-nav-btn" onclick="nextMonth()">›</button>
-    </div>
-    <div class="cal-grid" id="calGrid"></div>
-    <div id="timeWrap" style="display:none;">
-      <div class="time-section">
-        <div class="time-label">Choisissez un horaire</div>
-        <div class="time-grid" id="timeGrid"></div>
-      </div>
-    </div>
-    <div class="no-date-hint" id="dateHint">← Sélectionnez une date disponible</div>
+    <div class="modal-body" id="modalBody">
+      <div class="modal-svc-header" id="svcHeader"></div>
 
-    <!-- Price adjuster -->
-    <div class="price-adjuster" id="priceAdj" style="display:none;">
-      <div id="postesRow" style="display:none;">
-        <div class="adj-row">
-          <div>
-            <div class="adj-label">Nombre de postes</div>
-            <div class="adj-sub">+20€ par poste supplémentaire</div>
-          </div>
-          <div class="adj-ctrl">
-            <button class="adj-btn" onclick="changePostes(-1)">−</button>
-            <div class="adj-val" id="postesVal">1</div>
-            <button class="adj-btn" onclick="changePostes(1)">+</button>
-          </div>
+      <!-- STEP 0 — Detail service -->
+      <div class="step-panel active" id="step0">
+        <div id="svcDetail"></div>
+        <div class="modal-nav">
+          <button class="btn" id="btnS0" onclick="goStep(1)">Choisir un créneau →</button>
         </div>
       </div>
-      <div id="deplRow">
-        <div class="adj-row">
-          <div>
-            <div class="adj-label">Intervention en déplacement</div>
-            <div class="adj-sub">+20€ · Je me déplace chez vous</div>
-          </div>
-          <div class="adj-toggle">
-            <button class="toggle-switch" id="deplToggle" onclick="toggleDepl()">
-              <div class="toggle-knob"></div>
-            </button>
+
+      <!-- STEP 1 — Créneau + ajustement prix -->
+      <div class="step-panel" id="step1">
+        <div class="cal-month-nav">
+          <button class="cal-nav-btn" onclick="prevMonth()">‹</button>
+          <div class="cal-month-label" id="calLabel"></div>
+          <button class="cal-nav-btn" onclick="nextMonth()">›</button>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+        <div id="timeWrap" style="display:none;">
+          <div class="time-section">
+            <div class="time-label">Choisissez un horaire</div>
+            <div class="time-grid" id="timeGrid"></div>
           </div>
         </div>
+        <div class="no-date-hint" id="dateHint">← Sélectionnez une date disponible</div>
+
+        <!-- Price adjuster -->
+        <div class="price-adjuster" id="priceAdj" style="display:none;">
+          <div id="postesRow" style="display:none;">
+            <div class="adj-row">
+              <div>
+                <div class="adj-label">Nombre de postes</div>
+                <div class="adj-sub">+20€ par poste supplémentaire</div>
+              </div>
+              <div class="adj-ctrl">
+                <button class="adj-btn" onclick="changePostes(-1)">−</button>
+                <div class="adj-val" id="postesVal">1</div>
+                <button class="adj-btn" onclick="changePostes(1)">+</button>
+              </div>
+            </div>
+          </div>
+          <div id="deplRow">
+            <div class="adj-row">
+              <div>
+                <div class="adj-label">Intervention en déplacement</div>
+                <div class="adj-sub">+20€ · Je me déplace chez vous</div>
+              </div>
+              <div class="adj-toggle">
+                <button class="toggle-switch" id="deplToggle" onclick="toggleDepl()">
+                  <div class="toggle-knob"></div>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="price-total" id="priceTotal"></div>
+        </div>
+
+        <div class="modal-nav">
+          <button class="btn btn-back" onclick="goStep(0)">‹</button>
+          <button class="btn btn-dim" id="btnS1" onclick="goStep(2)">Procéder au paiement →</button>
+        </div>
       </div>
-      <div class="price-total" id="priceTotal"></div>
-    </div>
 
-    <div class="modal-nav">
-      <button class="btn btn-back" onclick="goStep(0)">‹</button>
-      <button class="btn btn-dim" id="btnS1" onclick="goStep(2)">Procéder au paiement →</button>
-    </div>
-  </div>
+      <!-- STEP 2 — Paiement -->
+      <div class="step-panel" id="step2">
+        <div class="pay-box">
+          <div class="pay-amount" id="payAmount"></div>
+          <div class="pay-desc" id="payDesc"></div>
+        </div>
+        <div class="pay-note">⚠️ Le paiement en ligne sera disponible très prochainement. En attendant, cliquez sur "Continuer" pour finaliser votre réservation — vous recevrez les instructions de paiement par retour.</div>
+        <div class="modal-nav">
+          <button class="btn btn-back" onclick="goStep(1)">‹</button>
+          <button class="btn" id="btnS2" onclick="goStep(3)">Continuer →</button>
+        </div>
+      </div>
 
-  <!-- STEP 2 — Paiement -->
-  <div class="step-panel" id="step2">
-    <div class="pay-box">
-      <div class="pay-amount" id="payAmount"></div>
-      <div class="pay-desc" id="payDesc"></div>
-    </div>
-    <div class="pay-note">⚠️ Le paiement en ligne sera disponible très prochainement. En attendant, cliquez sur "Continuer" pour finaliser votre réservation — vous recevrez les instructions de paiement par retour.</div>
-    <div class="modal-nav">
-      <button class="btn btn-back" onclick="goStep(1)">‹</button>
-      <button class="btn" id="btnS2" onclick="goStep(3)">Continuer →</button>
-    </div>
-  </div>
+      <!-- STEP 3 — Informations -->
+      <div class="step-panel" id="step3">
+        <div id="formWrap"></div>
+        <div class="modal-nav">
+          <button class="btn btn-back" onclick="goStep(2)">‹</button>
+          <button class="btn" id="btnS3" onclick="goStep(4)">Voir le récapitulatif →</button>
+        </div>
+      </div>
 
-  <!-- STEP 3 — Informations -->
-  <div class="step-panel" id="step3">
-    <div id="formWrap"></div>
-    <div class="modal-nav">
-      <button class="btn btn-back" onclick="goStep(2)">‹</button>
-      <button class="btn" id="btnS3" onclick="goStep(4)">Voir le récapitulatif →</button>
-    </div>
-  </div>
+      <!-- STEP 4 — Confirmation -->
+      <div class="step-panel" id="step4">
+        <div class="summary-box" id="summaryBox"></div>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.7;">En cliquant ci-dessous, votre réservation est envoyée à Fulman. Vous serez recontacté très rapidement pour confirmation.</p>
+        <div class="modal-nav" style="flex-direction:column;gap:8px;">
+          <button class="btn btn-wa" onclick="sendWA()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Envoyer ma réservation
+          </button>
+          <button class="btn btn-back" onclick="goStep(3)" style="flex:0 0 auto;">‹ Modifier</button>
+        </div>
+      </div>
 
-  <!-- STEP 4 — Confirmation -->
-  <div class="step-panel" id="step4">
-    <div class="summary-box" id="summaryBox"></div>
-    <p style="font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.7;">En cliquant ci-dessous, votre réservation est envoyée à Fulman. Vous serez recontacté très rapidement pour confirmation.</p>
-    <div class="modal-nav" style="flex-direction:column;gap:8px;">
-      <button class="btn btn-wa" onclick="sendWA()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Envoyer ma réservation
-      </button>
-      <button class="btn btn-back" onclick="goStep(3)" style="flex:0 0 auto;">‹ Modifier</button>
-    </div>
-  </div>
-
-</div><!-- /modal-body -->
-```
-
+    </div><!-- /modal-body -->
   </div>
 </div>
 
 <!-- LEGAL MODAL -->
-
 <div class="legal-overlay" id="legal-overlay" onclick="handleLegalClick(event)">
   <div class="legal-modal">
     <div class="legal-handle"></div>
@@ -841,186 +826,200 @@ function buildForm(type) {
       <div class="form-group"><label class="form-label">Nom de l'entreprise <span class="req">*</span></label><input class="form-input" id="f_entreprise" placeholder="Ma Société SAS" autocomplete="organization"></div>
       <div class="form-group"><label class="form-label">Téléphone <span class="req">*</span></label><input class="form-input" id="f_tel" type="tel" placeholder="06 12 34 56 78" autocomplete="tel"></div>
       <div class="form-group"><label class="form-label">Description du besoin <span class="req">*</span></label><textarea class="form-textarea" id="f_desc" placeholder="Décrivez votre situation ou votre problème..."></textarea></div>`;
+  }
+  // Particulier
+  const base = `
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Prénom <span class="req">*</span></label><input class="form-input" id="f_prenom" placeholder="Jean" autocomplete="given-name"></div>
+      <div class="form-group"><label class="form-label">Nom <span class="req">*</span></label><input class="form-input" id="f_nom" placeholder="Dupont" autocomplete="family-name"></div>
+    </div>
+    <div class="form-group"><label class="form-label">Téléphone <span class="req">*</span></label><input class="form-input" id="f_tel" type="tel" placeholder="06 12 34 56 78" autocomplete="tel"></div>`;
 
-}
-// Particulier
-const base = ` <div class="form-row"> <div class="form-group"><label class="form-label">Prénom <span class="req">*</span></label><input class="form-input" id="f_prenom" placeholder="Jean" autocomplete="given-name"></div> <div class="form-group"><label class="form-label">Nom <span class="req">*</span></label><input class="form-input" id="f_nom" placeholder="Dupont" autocomplete="family-name"></div> </div> <div class="form-group"><label class="form-label">Téléphone <span class="req">*</span></label><input class="form-input" id="f_tel" type="tel" placeholder="06 12 34 56 78" autocomplete="tel"></div>`;
+  if(type==='diag') return base+`
+    <div class="form-group"><label class="form-label">Décrivez votre problème <span class="req">*</span></label><textarea class="form-textarea" id="f_desc" placeholder="Mon PC ne démarre plus depuis hier, écran noir au démarrage..."></textarea></div>`;
 
-if(type===‘diag’) return base+` <div class="form-group"><label class="form-label">Décrivez votre problème <span class="req">*</span></label><textarea class="form-textarea" id="f_desc" placeholder="Mon PC ne démarre plus depuis hier, écran noir au démarrage..."></textarea></div>`;
+  if(type==='install') return base+`
+    <div class="form-group"><label class="form-label">Décrivez votre besoin <span class="req">*</span></label><textarea class="form-textarea" id="f_desc" placeholder="PC neuf à configurer, ou disque à cloner, informations sur votre matériel..."></textarea></div>`;
 
-if(type===‘install’) return base+` <div class="form-group"><label class="form-label">Décrivez votre besoin <span class="req">*</span></label><textarea class="form-textarea" id="f_desc" placeholder="PC neuf à configurer, ou disque à cloner, informations sur votre matériel..."></textarea></div>`;
-
-return base+` <div class="form-group"><label class="form-label">Informations complémentaires</label><textarea class="form-textarea" id="f_desc" placeholder="Toute information utile pour préparer l'intervention..."></textarea></div>`;
+  return base+`
+    <div class="form-group"><label class="form-label">Informations complémentaires</label><textarea class="form-textarea" id="f_desc" placeholder="Toute information utile pour préparer l'intervention..."></textarea></div>`;
 }
 
 function validateForm() {
-let ok = true;
-const isPro = cur.type===‘pro’;
-const required = isPro
-? [‘f_entreprise’,‘f_tel’,‘f_desc’]
-: [‘f_prenom’,‘f_nom’,‘f_tel’];
-required.forEach(id=>{
-const el=document.getElementById(id);
-if(el&&!el.value.trim()){el.style.borderColor=‘var(–error)’;ok=false;}
-else if(el) el.style.borderColor=’’;
-});
-if(!ok) document.getElementById(‘modalBody’).scrollTop=0;
-return ok;
+  let ok = true;
+  const isPro = cur.type==='pro';
+  const required = isPro
+    ? ['f_entreprise','f_tel','f_desc']
+    : ['f_prenom','f_nom','f_tel'];
+  required.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el&&!el.value.trim()){el.style.borderColor='var(--error)';ok=false;}
+    else if(el) el.style.borderColor='';
+  });
+  if(!ok) document.getElementById('modalBody').scrollTop=0;
+  return ok;
 }
 
 function getFormVals() {
-const g = id=>{const e=document.getElementById(id);return e?e.value.trim():’’;};
-return {prenom:g(‘f_prenom’),nom:g(‘f_nom’),tel:g(‘f_tel’),entreprise:g(‘f_entreprise’),desc:g(‘f_desc’)};
+  const g = id=>{const e=document.getElementById(id);return e?e.value.trim():'';};
+  return {prenom:g('f_prenom'),nom:g('f_nom'),tel:g('f_tel'),entreprise:g('f_entreprise'),desc:g('f_desc')};
 }
 
 /* ═══════════════════════════
-DATE FORMAT
+   DATE FORMAT
 ═══════════════════════════ */
 function fmtDate(ds) {
-if(!ds) return ‘’;
-const [y,m,d]=ds.split(’-’);
-const J=[‘Dimanche’,‘Lundi’,‘Mardi’,‘Mercredi’,‘Jeudi’,‘Vendredi’,‘Samedi’];
-const M=[‘janvier’,‘février’,‘mars’,‘avril’,‘mai’,‘juin’,‘juillet’,‘août’,‘septembre’,‘octobre’,‘novembre’,‘décembre’];
-const wd=new Date(+y,+m-1,+d).getDay();
-return `${J[wd]} ${+d} ${M[+m-1]} ${y}`;
+  if(!ds) return '';
+  const [y,m,d]=ds.split('-');
+  const J=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
+  const M=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  const wd=new Date(+y,+m-1,+d).getDay();
+  return `${J[wd]} ${+d} ${M[+m-1]} ${y}`;
 }
 
 /* ═══════════════════════════
-MODAL NAVIGATION
+   MODAL NAVIGATION
 ═══════════════════════════ */
 function openModal(id) {
-cur = S[id]; if(!cur) return;
-step=0; postes=1; deplacement=false;
-selDate=null; selTime=null;
+  cur = S[id]; if(!cur) return;
+  step=0; postes=1; deplacement=false;
+  selDate=null; selTime=null;
 
-// Service header
-document.getElementById(‘svcHeader’).innerHTML=` <span class="modal-tag ${cur.type}">${cur.cat}</span> <div class="modal-svc-title">${cur.title}</div> <div class="modal-svc-price ${cur.type}">${cur.price}${cur.unit.replace('€','') + '€' + (cur.unit.includes('/')? cur.unit.slice(cur.unit.indexOf('/')):'')}</div>`;
+  // Service header
+  document.getElementById('svcHeader').innerHTML=`
+    <span class="modal-tag ${cur.type}">${cur.cat}</span>
+    <div class="modal-svc-title">${cur.title}</div>
+    <div class="modal-svc-price ${cur.type}">${cur.price}${cur.unit.replace('€','') + '€' + (cur.unit.includes('/')? cur.unit.slice(cur.unit.indexOf('/')):'')}</div>`;
 
-// Step 0
-const inc=cur.includes.map(i=>`<li>${i}</li>`).join(’’);
-document.getElementById(‘svcDetail’).innerHTML=` <p class="svc-desc">${cur.desc}</p> <ul class="inc-list ${cur.type}">${inc}</ul> <div class="ideal-box">${cur.ideal}</div>`;
+  // Step 0
+  const inc=cur.includes.map(i=>`<li>${i}</li>`).join('');
+  document.getElementById('svcDetail').innerHTML=`
+    <p class="svc-desc">${cur.desc}</p>
+    <ul class="inc-list ${cur.type}">${inc}</ul>
+    <div class="ideal-box">${cur.ideal}</div>`;
 
-// Step 0 button
-const b0=document.getElementById(‘btnS0’);
-b0.className=’btn ’+(cur.type===‘part’?‘btn-part’:‘btn-pro’);
+  // Step 0 button
+  const b0=document.getElementById('btnS0');
+  b0.className='btn '+(cur.type==='part'?'btn-part':'btn-pro');
 
-// Price adjuster visibility
-document.getElementById(‘postesRow’).style.display = cur.hasPostes?‘block’:‘none’;
-document.getElementById(‘deplRow’).style.display = cur.noDepl?‘none’:‘block’;
-document.getElementById(‘deplToggle’).classList.remove(‘on’);
-document.getElementById(‘postesVal’).textContent=‘1’;
-updatePriceDisplay();
+  // Price adjuster visibility
+  document.getElementById('postesRow').style.display = cur.hasPostes?'block':'none';
+  document.getElementById('deplRow').style.display = cur.noDepl?'none':'block';
+  document.getElementById('deplToggle').classList.remove('on');
+  document.getElementById('postesVal').textContent='1';
+  updatePriceDisplay();
 
-// Step 2 button
-const b2=document.getElementById(‘btnS2’);
-b2.className=’btn ’+(cur.type===‘part’?‘btn-part’:‘btn-pro’);
+  // Step 2 button
+  const b2=document.getElementById('btnS2');
+  b2.className='btn '+(cur.type==='part'?'btn-part':'btn-pro');
 
-// Step 3 button
-const b3=document.getElementById(‘btnS3’);
-b3.className=’btn ’+(cur.type===‘part’?‘btn-part’:‘btn-pro’);
+  // Step 3 button
+  const b3=document.getElementById('btnS3');
+  b3.className='btn '+(cur.type==='part'?'btn-part':'btn-pro');
 
-// Pro modal class for toggle color
-document.getElementById(‘modal’).classList.toggle(‘pro-modal’, cur.type===‘pro’);
+  // Pro modal class for toggle color
+  document.getElementById('modal').classList.toggle('pro-modal', cur.type==='pro');
 
-// Form
-document.getElementById(‘formWrap’).innerHTML=buildForm(cur.formType);
+  // Form
+  document.getElementById('formWrap').innerHTML=buildForm(cur.formType);
 
-// Pay box desc
-document.getElementById(‘payDesc’).textContent=`${cur.title} · ${fmtDate(selDate)||'Date à confirmer'}`;
+  // Pay box desc
+  document.getElementById('payDesc').textContent=`${cur.title} · ${fmtDate(selDate)||'Date à confirmer'}`;
 
-// Calendar
-initCal();
+  // Calendar
+  initCal();
 
-// Price adjuster show (needs date selection)
-document.getElementById(‘priceAdj’).style.display=‘none’;
+  // Price adjuster show (needs date selection)
+  document.getElementById('priceAdj').style.display='none';
 
-goStep(0);
-document.getElementById(‘overlay’).classList.add(‘open’);
-document.body.style.overflow=‘hidden’;
+  goStep(0);
+  document.getElementById('overlay').classList.add('open');
+  document.body.style.overflow='hidden';
 }
 
 function goStep(n) {
-if(n===4 && step===3) { if(!validateForm()) return; buildSummary(); }
-step=n;
-document.querySelectorAll(’.step-panel’).forEach((p,i)=>p.classList.toggle(‘active’,i===n));
-document.querySelectorAll(’.modal-tab’).forEach((t,i)=>{
-t.classList.remove(‘active’,‘done’);
-if(i===n) t.classList.add(‘active’);
-else if(i<n) t.classList.add(‘done’);
-});
-document.getElementById(‘modalBody’).scrollTop=0;
+  if(n===4 && step===3) { if(!validateForm()) return; buildSummary(); }
+  step=n;
+  document.querySelectorAll('.step-panel').forEach((p,i)=>p.classList.toggle('active',i===n));
+  document.querySelectorAll('.modal-tab').forEach((t,i)=>{
+    t.classList.remove('active','done');
+    if(i===n) t.classList.add('active');
+    else if(i<n) t.classList.add('done');
+  });
+  document.getElementById('modalBody').scrollTop=0;
 
-// Show price adjuster after date+time selected
-if(n===1) {
-const showAdj = cur.hasPostes || !cur.noDepl;
-document.getElementById(‘priceAdj’).style.display = (selDate&&selTime&&showAdj)?‘block’:‘none’;
-}
-// Update pay display
-if(n===2) {
-updatePriceDisplay();
-document.getElementById(‘payDesc’).textContent=`${cur.title} · ${fmtDate(selDate)} à ${selTime}`;
-}
+  // Show price adjuster after date+time selected
+  if(n===1) {
+    const showAdj = cur.hasPostes || !cur.noDepl;
+    document.getElementById('priceAdj').style.display = (selDate&&selTime&&showAdj)?'block':'none';
+  }
+  // Update pay display
+  if(n===2) {
+    updatePriceDisplay();
+    document.getElementById('payDesc').textContent=`${cur.title} · ${fmtDate(selDate)} à ${selTime}`;
+  }
 }
 
 // Show adjuster when time picked
 const origPickTime = pickTime;
 
 function buildSummary() {
-const v=getFormVals();
-const rows=[
-[‘Service’,cur.title],
-[‘Tarif’,fmtPrice()],
-[‘Date’,fmtDate(selDate)],
-[‘Horaire’,selTime],
-];
-if(cur.hasPostes && postes>1) rows.push([‘Postes’,postes+’ (dont ‘+(postes-1)+’ supplémentaire’+((postes-1)>1?‘s’:’’)+’)’]);
-if(!cur.noDepl && deplacement) rows.push([‘Déplacement’,‘Oui (+20€)’]);
-if(v.entreprise) rows.push([‘Entreprise’,v.entreprise]);
-if(v.prenom||v.nom) rows.push([‘Client’,`${v.prenom} ${v.nom}`.trim()]);
-if(v.tel) rows.push([‘Téléphone’,v.tel]);
-if(v.desc) rows.push([‘Description’,v.desc]);
+  const v=getFormVals();
+  const rows=[
+    ['Service',cur.title],
+    ['Tarif',fmtPrice()],
+    ['Date',fmtDate(selDate)],
+    ['Horaire',selTime],
+  ];
+  if(cur.hasPostes && postes>1) rows.push(['Postes',postes+' (dont '+(postes-1)+' supplémentaire'+((postes-1)>1?'s':'')+')']);
+  if(!cur.noDepl && deplacement) rows.push(['Déplacement','Oui (+20€)']);
+  if(v.entreprise) rows.push(['Entreprise',v.entreprise]);
+  if(v.prenom||v.nom) rows.push(['Client',`${v.prenom} ${v.nom}`.trim()]);
+  if(v.tel) rows.push(['Téléphone',v.tel]);
+  if(v.desc) rows.push(['Description',v.desc]);
 
-document.getElementById(‘summaryBox’).innerHTML=` <div class="summary-title">📋 Récapitulatif de réservation</div> ${rows.filter(r=>r[1]).map(([k,v])=>`
-<div class="summary-row">
-<span class="summary-key">${k}</span>
-<span class="summary-val">${v}</span>
-</div>`).join('')}`;
+  document.getElementById('summaryBox').innerHTML=`
+    <div class="summary-title">📋 Récapitulatif de réservation</div>
+    ${rows.filter(r=>r[1]).map(([k,v])=>`
+      <div class="summary-row">
+        <span class="summary-key">${k}</span>
+        <span class="summary-val">${v}</span>
+      </div>`).join('')}`;
 }
 
 function sendWA() {
-const v=getFormVals();
-let msg=`🔧 *Nouvelle réservation Fulman*\n\n`;
-msg+=`*Service :* ${cur.title}\n`;
-msg+=`*Tarif :* ${fmtPrice()}\n`;
-msg+=`*Date :* ${fmtDate(selDate)}\n`;
-msg+=`*Horaire :* ${selTime}\n`;
-if(cur.hasPostes&&postes>1) msg+=`*Postes :* ${postes}\n`;
-if(!cur.noDepl&&deplacement) msg+=`*Déplacement :* Oui (+20€)\n`;
-msg+=`\n`;
-if(v.entreprise) msg+=`*Entreprise :* ${v.entreprise}\n`;
-if(v.prenom||v.nom) msg+=`*Client :* ${v.prenom} ${v.nom}\n`.trim()+’\n’;
-if(v.tel) msg+=`*Téléphone :* ${v.tel}\n`;
-if(v.desc) msg+=`\n*Description :*\n${v.desc}\n`;
-msg+=`\n— Envoyé depuis fulman.fr`;
-window.open(`https://wa.me/33743586807?text=${encodeURIComponent(msg)}`,’_blank’);
+  const v=getFormVals();
+  let msg=`🔧 *Nouvelle réservation Fulman*\n\n`;
+  msg+=`*Service :* ${cur.title}\n`;
+  msg+=`*Tarif :* ${fmtPrice()}\n`;
+  msg+=`*Date :* ${fmtDate(selDate)}\n`;
+  msg+=`*Horaire :* ${selTime}\n`;
+  if(cur.hasPostes&&postes>1) msg+=`*Postes :* ${postes}\n`;
+  if(!cur.noDepl&&deplacement) msg+=`*Déplacement :* Oui (+20€)\n`;
+  msg+=`\n`;
+  if(v.entreprise) msg+=`*Entreprise :* ${v.entreprise}\n`;
+  if(v.prenom||v.nom) msg+=`*Client :* ${v.prenom} ${v.nom}\n`.trim()+'\n';
+  if(v.tel) msg+=`*Téléphone :* ${v.tel}\n`;
+  if(v.desc) msg+=`\n*Description :*\n${v.desc}\n`;
+  msg+=`\n— Envoyé depuis fulman.fr`;
+  window.open(`https://wa.me/33743586807?text=${encodeURIComponent(msg)}`,'_blank');
 }
 
-function closeModal(){document.getElementById(‘overlay’).classList.remove(‘open’);document.body.style.overflow=’’;}
-function handleOverlayClick(e){if(e.target===document.getElementById(‘overlay’))closeModal();}
+function closeModal(){document.getElementById('overlay').classList.remove('open');document.body.style.overflow='';}
+function handleOverlayClick(e){if(e.target===document.getElementById('overlay'))closeModal();}
 
 // Override pickTime to also show price adjuster
-function pickTime(t,el){selTime=t;document.querySelectorAll(’.time-slot’).forEach(s=>s.classList.remove(‘selected’));el.classList.add(‘selected’);checkStep1();const showAdj=cur&&(cur.hasPostes||!cur.noDepl);if(showAdj)document.getElementById(‘priceAdj’).style.display=‘block’;}
+function pickTime(t,el){selTime=t;document.querySelectorAll('.time-slot').forEach(s=>s.classList.remove('selected'));el.classList.add('selected');checkStep1();const showAdj=cur&&(cur.hasPostes||!cur.noDepl);if(showAdj)document.getElementById('priceAdj').style.display='block';}
 
 /* LEGAL */
-function openLegal(tab=‘mentions’){switchTab(tab);document.getElementById(‘legal-overlay’).classList.add(‘open’);document.body.style.overflow=‘hidden’;}
-function closeLegal(){document.getElementById(‘legal-overlay’).classList.remove(‘open’);document.body.style.overflow=’’;}
-function handleLegalClick(e){if(e.target===document.getElementById(‘legal-overlay’))closeLegal();}
+function openLegal(tab='mentions'){switchTab(tab);document.getElementById('legal-overlay').classList.add('open');document.body.style.overflow='hidden';}
+function closeLegal(){document.getElementById('legal-overlay').classList.remove('open');document.body.style.overflow='';}
+function handleLegalClick(e){if(e.target===document.getElementById('legal-overlay'))closeLegal();}
 function switchTab(tab){
-document.querySelectorAll(’.legal-tab-btn’).forEach(b=>b.classList.toggle(‘active’,b.dataset.tab===tab));
-document.querySelectorAll(’.legal-tab-content’).forEach(c=>c.classList.toggle(‘active’,c.id===‘tab-’+tab));
+  document.querySelectorAll('.legal-tab-btn').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));
+  document.querySelectorAll('.legal-tab-content').forEach(c=>c.classList.toggle('active',c.id==='tab-'+tab));
 }
-document.addEventListener(‘keydown’,e=>{if(e.key===‘Escape’){closeModal();closeLegal();}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeLegal();}});
 </script>
-
 </body>
 </html>
