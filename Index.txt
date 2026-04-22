@@ -1,0 +1,980 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fulman – Catalogue de Services</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0a0a0f; --surface:#111118; --surface2:#16161f; --surface3:#1c1c28;
+  --border:#1e1e2e; --border2:#2a2a3e;
+  --accent:#00e5ff; --pro:#7c3aed; --text:#e8e8f0; --muted:#6b6b80;
+  --part:#00b4cc; --success:#10b981; --error:#ef4444;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;overflow-x:hidden;}
+
+body::before{content:'';position:fixed;top:-200px;left:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(0,229,255,.05) 0%,transparent 70%);pointer-events:none;animation:drift 14s ease-in-out infinite alternate;z-index:0;}
+body::after{content:'';position:fixed;bottom:-200px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(124,58,237,.06) 0%,transparent 70%);pointer-events:none;animation:drift 18s ease-in-out infinite alternate-reverse;z-index:0;}
+@keyframes drift{from{transform:translate(0,0);}to{transform:translate(40px,40px);}}
+
+/* HEADER */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(10,10,15,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(–border);height:56px;display:flex;align-items:center;padding:0 16px;}
+@media(min-width:600px){.site-header{padding:0 28px;height:60px;}}
+.site-header-inner{max-width:1100px;width:100%;margin:0 auto;display:flex;align-items:center;gap:10px;}
+.logo-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(–accent);border:1px solid rgba(0,229,255,.5);padding:3px 9px;border-radius:3px;white-space:nowrap;flex-shrink:0;}
+.header-sep{width:1px;height:18px;background:var(–border2);flex-shrink:0;}
+.header-title{font-family:'Syne',sans-serif;font-size:clamp(.85rem,3vw,1.35rem);font-weight:800;letter-spacing:-.02em;background:linear-gradient(135deg,#fff,#a0a0c0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;white-space:nowrap;line-height:1;}
+.header-sub{font-family:'DM Mono',monospace;font-size:9px;color:var(–muted);letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex-shrink:1;min-width:0;display:none;}
+@media(min-width:480px){.header-sub{display:block;}}
+.header-legal-btn{margin-left:auto;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(–muted);background:none;border:1px solid var(–border2);padding:5px 9px;border-radius:3px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:color .2s,border-color .2s;}
+.header-legal-btn:hover{color:var(–text);}
+
+/* WRAPPER */
+.page-wrapper{max-width:1100px;margin:0 auto;padding:28px 14px 80px;position:relative;z-index:1;}
+@media(min-width:600px){.page-wrapper{padding:40px 24px 80px;}}
+
+/* SECTION BANNERS */
+.section-tab{margin-bottom:24px;padding:16px 18px;border-radius:12px;overflow:hidden;}
+@media(min-width:600px){.section-tab{padding:24px 28px;margin-bottom:32px;}}
+.section-tab.part{background:linear-gradient(120deg,rgba(0,180,204,.09),rgba(0,180,204,.02));border:1px solid rgba(0,180,204,.25);}
+.section-tab.pro{background:linear-gradient(120deg,rgba(124,58,237,.1),rgba(124,58,237,.02));border:1px solid rgba(124,58,237,.3);}
+.section-tab-inner{display:flex;align-items:center;gap:12px;}
+.section-tab-icon{font-size:20px;flex-shrink:0;}
+@media(min-width:600px){.section-tab-icon{font-size:26px;}}
+.section-tab-text{flex:1;min-width:0;}
+.section-tab h2{font-family:'Syne',sans-serif;font-size:clamp(.95rem,4vw,1.85rem);font-weight:800;letter-spacing:-.01em;text-transform:uppercase;line-height:1;}
+.section-tab.part h2{color:var(–part);}
+.section-tab.pro h2{color:#a78bfa;}
+.section-tab-sub{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;margin-top:5px;opacity:.45;}
+.section-tab.part .section-tab-sub{color:var(–part);}
+.section-tab.pro .section-tab-sub{color:#a78bfa;}
+.section-tab-line{flex:1;height:1px;min-width:12px;}
+.section-tab.part .section-tab-line{background:linear-gradient(90deg,rgba(0,180,204,.4),transparent);}
+.section-tab.pro .section-tab-line{background:linear-gradient(90deg,rgba(124,58,237,.4),transparent);}
+
+/* CATEGORY */
+.category{margin-bottom:32px;animation:fadeUp .6s ease both;}
+.category-header{margin-bottom:11px;}
+.category-header h3{font-family:'DM Mono',monospace;font-size:10px;font-weight:500;color:var(–muted);text-transform:uppercase;letter-spacing:.15em;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.soon-badge{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;border-radius:2px;}
+.part .soon-badge{color:var(–part);background:rgba(0,180,204,.12);border:1px solid rgba(0,180,204,.25);}
+.pro .soon-badge{color:#a78bfa;background:rgba(124,58,237,.12);border:1px solid rgba(124,58,237,.25);}
+.category-soon .category-header h3{opacity:.5;}
+.category-soon .grid{filter:blur(1.5px);pointer-events:none;}
+
+/* GRID */
+.grid{display:grid;grid-template-columns:1fr;gap:9px;}
+@media(min-width:480px){.grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:760px){.grid{grid-template-columns:repeat(3,1fr);}}
+@media(min-width:1000px){.grid{grid-template-columns:repeat(4,1fr);}}
+
+/* CARDS */
+.card{background:var(–surface);border:1px solid var(–border);border-radius:10px;padding:15px 17px;position:relative;cursor:pointer;overflow:hidden;transition:border-color .25s,transform .25s,box-shadow .25s;user-select:none;display:flex;flex-direction:column;}
+.card::before{content:'';position:absolute;inset:0;border-radius:10px;opacity:0;transition:opacity .3s;pointer-events:none;}
+.part .card::before{background:linear-gradient(135deg,rgba(0,229,255,.04),transparent);}
+.pro .card::before{background:linear-gradient(135deg,rgba(124,58,237,.06),transparent);}
+@media(hover:hover){
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(0,0,0,.5);}
+.part .card:hover{border-color:rgba(0,229,255,.4);}
+.pro .card:hover{border-color:rgba(124,58,237,.45);}
+.card:hover::before{opacity:1;}
+.card:hover .card-cta{opacity:1;}
+}
+.card-name{font-size:13px;font-weight:500;color:var(–text);margin-bottom:5px;line-height:1.35;}
+.card-desc{font-size:11px;color:var(–muted);line-height:1.5;margin-bottom:13px;flex:1;}
+.card-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;}
+.card-price{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;white-space:nowrap;}
+.part .card-price{color:var(–part);}
+.pro .card-price{color:#a78bfa;}
+.card-cta{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(–muted);opacity:0;transition:opacity .2s;white-space:nowrap;}
+.card.featured{border-color:rgba(124,58,237,.5);background:linear-gradient(135deg,#111118,#150d25);}
+.badge{position:absolute;top:10px;right:10px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;background:var(–pro);color:#fff;padding:2px 6px;border-radius:2px;}
+
+.segment{margin-bottom:48px;}
+.divider{border:none;border-top:1px solid var(–border);margin:40px 0;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+/* FOOTER */
+.site-footer{border-top:1px solid var(–border);padding:24px 16px;position:relative;z-index:1;}
+.site-footer-inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:14px;align-items:center;}
+@media(min-width:600px){.site-footer-inner{flex-direction:row;justify-content:space-between;}}
+.footer-brand{font-family:'DM Mono',monospace;font-size:10px;color:var(–muted);letter-spacing:.08em;opacity:.55;text-align:center;}
+.footer-links{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+.footer-link{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(–muted);background:none;border:none;cursor:pointer;text-decoration:underline;text-decoration-color:var(–border2);transition:color .2s;padding:0;}
+.footer-link:hover{color:var(–text);}
+
+/* ═══════════════════════════════════════
+BOOKING MODAL (bottom sheet)
+═══════════════════════════════════════ */
+.overlay{position:fixed;inset:0;background:rgba(6,6,12,.88);backdrop-filter:blur(10px);z-index:200;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;}
+@media(min-width:640px){.overlay{align-items:center;padding:20px;}}
+.overlay.open{opacity:1;pointer-events:all;}
+
+.modal{background:var(–surface2);border:1px solid var(–border2);border-radius:20px 20px 0 0;width:100%;max-width:100%;position:relative;transform:translateY(100%);transition:transform .4s cubic-bezier(.32,1,.55,1);max-height:92vh;overflow-y:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;}
+@media(min-width:640px){.modal{border-radius:16px;max-width:580px;transform:translateY(30px);max-height:90vh;}}
+.overlay.open .modal{transform:translateY(0);}
+
+.modal-handle{width:40px;height:4px;background:var(–border2);border-radius:2px;margin:14px auto 0;flex-shrink:0;}
+@media(min-width:640px){.modal-handle{display:none;}}
+
+.modal-close{position:absolute;top:14px;right:14px;background:var(–border);border:none;color:var(–muted);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;z-index:10;}
+.modal-close:hover{background:var(–border2);color:var(–text);}
+
+/* Modal steps navigation */
+.modal-steps-nav{display:flex;gap:0;border-bottom:1px solid var(–border);padding:0 20px;flex-shrink:0;overflow-x:auto;}
+@media(min-width:640px){.modal-steps-nav{padding:0 28px;}}
+.modal-step-tab{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:12px 10px;color:var(–muted);border-bottom:2px solid transparent;white-space:nowrap;transition:color .2s,border-color .2s;}
+.modal-step-tab.active{color:var(–text);border-bottom-color:var(–accent);}
+.modal-step-tab.done{color:var(–success);}
+
+.modal-body{padding:20px;overflow-y:auto;flex:1;}
+@media(min-width:640px){.modal-body{padding:28px;}}
+
+/* Service info header */
+.modal-service-header{margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(–border);}
+.modal-tag{display:inline-block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:10px;padding:3px 9px;border-radius:2px;}
+.modal-tag.part{color:var(–part);background:rgba(0,180,204,.1);border:1px solid rgba(0,180,204,.2);}
+.modal-tag.pro{color:#a78bfa;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.2);}
+.modal-title{font-family:'Syne',sans-serif;font-size:clamp(1.1rem,4vw,1.5rem);font-weight:800;line-height:1.1;color:#fff;margin-bottom:4px;padding-right:32px;}
+.modal-price{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;}
+.modal-price.part{color:var(–part);}
+.modal-price.pro{color:#a78bfa;}
+
+/* Step panels */
+.step-panel{display:none;}
+.step-panel.active{display:block;}
+
+/* Step 1 -- Service detail */
+.service-desc{font-size:13px;line-height:1.75;color:#c0c0d0;margin-bottom:16px;}
+.includes-list{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+.includes-list li{font-size:12px;color:#c0c0d0;display:flex;align-items:flex-start;gap:8px;line-height:1.5;}
+.includes-list li::before{content:'→';font-family:'DM Mono',monospace;font-size:11px;flex-shrink:0;margin-top:1px;}
+.includes-list.part li::before{color:var(–part);}
+.includes-list.pro li::before{color:#a78bfa;}
+.ideal-box{background:var(–surface);border:1px solid var(–border);border-radius:8px;padding:11px 13px;font-size:12px;color:var(–muted);line-height:1.65;}
+.ideal-box strong{color:var(–text);font-weight:500;}
+
+/* Step 2 -- Calendar */
+.calendar-wrap{margin-bottom:20px;}
+.cal-month-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.cal-month-label{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;color:#fff;}
+.cal-nav-btn{background:var(–surface);border:1px solid var(–border);color:var(–muted);width:32px;height:32px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:color .2s,border-color .2s;}
+.cal-nav-btn:hover{color:var(–text);border-color:var(–border2);}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
+.cal-day-name{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(–muted);text-align:center;padding:4px 0;}
+.cal-day{aspect-ratio:1;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;cursor:default;color:var(–muted);background:transparent;border:1px solid transparent;transition:background .15s,color .15s,border-color .15s;}
+.cal-day.empty{}
+.cal-day.past{opacity:.3;}
+.cal-day.unavailable{opacity:.25;}
+.cal-day.available{color:var(–text);cursor:pointer;}
+.cal-day.available:hover{background:var(–surface);border-color:var(–border2);}
+.cal-day.selected{background:var(–accent)!important;color:#000!important;border-color:var(–accent)!important;font-weight:700;}
+.part .cal-day.selected{background:var(–part)!important;border-color:var(–part)!important;}
+.pro .cal-day.selected{background:var(–pro)!important;border-color:var(–pro)!important;color:#fff!important;}
+
+/* Time slots */
+.time-section{margin-top:16px;}
+.time-section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(–muted);margin-bottom:10px;}
+.time-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;}
+@media(min-width:400px){.time-grid{grid-template-columns:repeat(4,1fr);}}
+.time-slot{background:var(–surface);border:1px solid var(–border);border-radius:7px;padding:9px 6px;text-align:center;font-family:'DM Mono',monospace;font-size:11px;color:var(–text);cursor:pointer;transition:background .15s,border-color .15s,color .15s;}
+.time-slot:hover{border-color:var(–border2);}
+.time-slot.selected{font-weight:500;}
+.part .time-slot.selected{background:rgba(0,180,204,.15);border-color:var(–part);color:var(–part);}
+.pro .time-slot.selected{background:rgba(124,58,237,.15);border-color:#a78bfa;color:#a78bfa;}
+.no-date-hint{font-size:12px;color:var(–muted);text-align:center;padding:20px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;}
+
+/* Step 3 -- Form */
+.form-group{margin-bottom:14px;}
+.form-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(–muted);margin-bottom:6px;display:block;}
+.form-label span.req{color:var(–accent);}
+.form-input,.form-textarea,.form-select{width:100%;background:var(–surface);border:1px solid var(–border);border-radius:8px;color:var(–text);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:300;padding:10px 13px;outline:none;transition:border-color .2s;}
+.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(–accent);}
+.form-textarea{resize:vertical;min-height:80px;}
+.form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b6b80' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.form-error{font-size:11px;color:var(–error);margin-top:4px;display:none;}
+
+/* Summary box */
+.booking-summary{background:var(–surface);border:1px solid var(–border);border-radius:10px;padding:14px;margin-bottom:18px;}
+.booking-summary-title{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(–muted);margin-bottom:10px;}
+.booking-summary-row{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;font-size:12px;padding:4px 0;border-bottom:1px solid var(–border);}
+.booking-summary-row:last-child{border-bottom:none;}
+.booking-summary-key{color:var(–muted);}
+.booking-summary-val{color:var(–text);font-weight:500;text-align:right;}
+
+/* Navigation buttons */
+.modal-nav{display:flex;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid var(–border);}
+.btn{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;padding:12px 18px;border-radius:9px;border:none;cursor:pointer;transition:opacity .2s,transform .2s;flex:1;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;}
+.btn:hover{opacity:.88;transform:translateY(-1px);}
+.btn-back{background:var(–surface);border:1px solid var(–border);color:var(–muted);flex:0 0 auto;padding:12px 14px;}
+.btn-next-part{background:var(–part);color:#000;}
+.btn-next-pro{background:var(–pro);color:#fff;}
+.btn-wa{background:#25D366;color:#fff;}
+.btn-disabled{opacity:.35;pointer-events:none;}
+
+/* ═══════════════════════════════════════
+LEGAL MODAL
+═══════════════════════════════════════ */
+.legal-overlay{position:fixed;inset:0;background:rgba(6,6,12,.92);backdrop-filter:blur(12px);z-index:300;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;}
+@media(min-width:600px){.legal-overlay{align-items:center;padding:20px;}}
+.legal-overlay.open{opacity:1;pointer-events:all;}
+.legal-modal{background:var(–surface2);border:1px solid var(–border2);border-radius:20px 20px 0 0;width:100%;max-width:100%;padding:20px 18px 36px;position:relative;transform:translateY(100%);transition:transform .4s cubic-bezier(.32,1,.55,1);max-height:92vh;overflow-y:auto;}
+@media(min-width:600px){.legal-modal{border-radius:16px;max-width:680px;padding:36px;transform:translateY(30px);max-height:88vh;}}
+.legal-overlay.open .legal-modal{transform:translateY(0);}
+.legal-handle{width:40px;height:4px;background:var(–border2);border-radius:2px;margin:0 auto 18px;}
+@media(min-width:600px){.legal-handle{display:none;}}
+.legal-close{position:absolute;top:14px;right:14px;background:var(–border);border:none;color:var(–muted);width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;}
+.legal-close:hover{background:var(–border2);color:var(–text);}
+.legal-tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:22px;border-bottom:1px solid var(–border);padding-bottom:14px;}
+.legal-tab-btn{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:4px;background:var(–surface);border:1px solid var(–border);color:var(–muted);cursor:pointer;transition:background .2s,color .2s,border-color .2s;white-space:nowrap;}
+.legal-tab-btn.active{background:rgba(0,229,255,.1);border-color:rgba(0,229,255,.35);color:var(–accent);}
+.legal-tab-content{display:none;}
+.legal-tab-content.active{display:block;}
+.legal-title{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:18px;padding-right:32px;}
+.legal-section{margin-bottom:20px;}
+.legal-section h3{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;color:var(–accent);margin-bottom:8px;}
+.legal-section p{font-size:12px;line-height:1.75;color:#c0c0d0;margin-bottom:6px;}
+.legal-section ul{list-style:none;display:flex;flex-direction:column;gap:5px;}
+.legal-section ul li{font-size:12px;color:#c0c0d0;display:flex;align-items:flex-start;gap:8px;line-height:1.5;}
+.legal-section ul li::before{content:'·';color:var(–accent);font-weight:700;flex-shrink:0;}
+.legal-divider{border:none;border-top:1px solid var(–border);margin:16px 0;}
+.legal-contact-box{background:var(–surface);border:1px solid var(–border);border-radius:8px;padding:12px 14px;font-size:12px;color:var(–muted);line-height:1.7;margin-top:6px;}
+.legal-contact-box strong{color:var(–text);}
+.legal-contact-box a{color:var(–accent);text-decoration:none;}
+</style>
+
+</head>
+<body>
+
+<!-- HEADER -->
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <span class="logo-tag">Fulman</span>
+    <div class="header-sep"></div>
+    <span class="header-title">Catalogue de Services</span>
+    <span class="header-sub">// cliquez sur un service</span>
+    <button class="header-legal-btn" onclick="openLegal()">Mentions légales</button>
+  </div>
+</header>
+
+<main class="page-wrapper">
+
+  <!-- ═══ PRO ═══ -->
+
+  <div class="segment pro">
+    <div class="section-tab pro">
+      <div class="section-tab-inner">
+        <span class="section-tab-icon">🏢</span>
+        <div class="section-tab-text">
+          <h2>Offres Professionnels</h2>
+          <div class="section-tab-sub">// entreprises &amp; indépendants</div>
+        </div>
+        <div class="section-tab-line"></div>
+      </div>
+    </div>
+
+```
+<div class="category">
+  <div class="category-header"><h3>🌐 Réseau &amp; Infrastructure</h3></div>
+  <div class="grid">
+    <div class="card" onclick="openModal('reseau-install')"><div class="card-name">Installation &amp; Configuration réseau</div><div class="card-desc">150€ / 1 poste · +20€ par poste supplémentaire</div><div class="card-footer"><div class="card-price">à partir de 150€</div><span class="card-cta">Réserver →</span></div></div>
+    <div class="card" onclick="openModal('admin-reseau')"><div class="card-name">Administration réseau</div><div class="card-desc">50€/mois / 1 poste · +20€ par poste supplémentaire</div><div class="card-footer"><div class="card-price">à partir de 50€/mois</div><span class="card-cta">Réserver →</span></div></div>
+  </div>
+</div>
+
+<div class="category">
+  <div class="category-header"><h3>🛡️ Cybersécurité</h3></div>
+  <div class="grid">
+    <div class="card" onclick="openModal('audit')"><div class="card-name">Audit santé numérique</div><div class="card-desc">Analyse complète et priorisée des risques</div><div class="card-footer"><div class="card-price">150€</div><span class="card-cta">Réserver →</span></div></div>
+    <div class="card" onclick="openModal('remediation')"><div class="card-name">Remédiation &amp; Sécurisation</div><div class="card-desc">Correction des failles et renforcement du système</div><div class="card-footer"><div class="card-price">120€</div><span class="card-cta">Réserver →</span></div></div>
+    <div class="card" onclick="openModal('teletravail')"><div class="card-name">Pack Poste Télétravail</div><div class="card-desc">Environnement de travail sécurisé à distance</div><div class="card-footer"><div class="card-price">120€</div><span class="card-cta">Réserver →</span></div></div>
+    <div class="card" onclick="openModal('backup-pro')"><div class="card-name">Sauvegardes personnalisées</div><div class="card-desc">Protection des données professionnelles</div><div class="card-footer"><div class="card-price">90€</div><span class="card-cta">Réserver →</span></div></div>
+  </div>
+</div>
+
+<div class="category">
+  <div class="category-header"><h3>🔵 Abonnements</h3></div>
+  <div class="grid">
+    <div class="card" onclick="openModal('soc')"><div class="card-name">Cyber Monitoring (SOC)</div><div class="card-desc">Surveillance continue et alertes en cas de menace</div><div class="card-footer"><div class="card-price">79€/mois</div><span class="card-cta">Réserver →</span></div></div>
+    <div class="card" onclick="openModal('support-mensuel')"><div class="card-name">Support Mensuel</div><div class="card-desc">Assistance technique continue</div><div class="card-footer"><div class="card-price">70€/mois</div><span class="card-cta">Réserver →</span></div></div>
+    <div class="card" onclick="openModal('maintenance')"><div class="card-name">Maintenance Mensuelle</div><div class="card-desc">Entretien et optimisation de vos postes</div><div class="card-footer"><div class="card-price">60€/mois · /PC</div><span class="card-cta">Réserver →</span></div></div>
+    <div class="card featured" onclick="openModal('secu-complete')"><div class="badge">⭐ Best</div><div class="card-name">Sécurité Complète</div><div class="card-desc">Maintenance + support + cybersécurité</div><div class="card-footer"><div class="card-price">129€/mois</div><span class="card-cta">Réserver →</span></div></div>
+  </div>
+</div>
+
+<div class="category">
+  <div class="category-header"><h3>🚨 Diagnostic &amp; Dépannage</h3></div>
+  <div class="grid">
+    <div class="card" onclick="openModal('diag-pro')"><div class="card-name">Diagnostic initial</div><div class="card-desc">Identification rapide du problème</div><div class="card-footer"><div class="card-price">30€</div><span class="card-cta">Réserver →</span></div></div>
+    <div class="card" onclick="openModal('depannage-pro')"><div class="card-name">Dépannage</div><div class="card-desc">Réparation et résolution de panne</div><div class="card-footer"><div class="card-price">60€/h</div><span class="card-cta">Réserver →</span></div></div>
+    <div class="card" onclick="openModal('recup-pro')"><div class="card-name">Récupération de données</div><div class="card-desc">Restauration de données critiques</div><div class="card-footer"><div class="card-price">90€</div><span class="card-cta">Réserver →</span></div></div>
+  </div>
+</div>
+
+<div class="category category-soon pro">
+  <div class="category-header"><h3>🎓 Formation <span class="soon-badge">⏳ Bientôt</span></h3></div>
+  <div class="grid">
+    <div class="card"><div class="card-name">Formation cybersécurité</div><div class="card-desc">Sensibilisation aux risques pour équipes</div><div class="card-footer"><div class="card-price">200€</div></div></div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <hr class="divider">
+
+  <!-- ═══ PARTICULIERS ═══ -->
+
+  <div class="segment part">
+    <div class="section-tab part">
+      <div class="section-tab-inner">
+        <span class="section-tab-icon">👤</span>
+        <div class="section-tab-text">
+          <h2>Offres Particuliers</h2>
+          <div class="section-tab-sub">// particuliers &amp; usage personnel</div>
+        </div>
+        <div class="section-tab-line"></div>
+      </div>
+    </div>
+
+```
+<div class="category">
+  <div class="category-header"><h3>🚨 Diagnostic &amp; Dépannage</h3></div>
+  <div class="grid">
+    <div class="card" onclick="openModal('diag-part')"><div class="card-name">Diagnostic initial</div><div class="card-desc">Identification rapide du problème</div><div class="card-footer"><div class="card-price">30€</div><span class="card-cta">Réserver →</span></div></div>
+    <div class="card" onclick="openModal('depannage-part')"><div class="card-name">Dépannage</div><div class="card-desc">Réparation et résolution de panne</div><div class="card-footer"><div class="card-price">60€/h</div><span class="card-cta">Réserver →</span></div></div>
+    <div class="card" onclick="openModal('recup-data')"><div class="card-name">Récupération de données</div><div class="card-desc">Restauration de fichiers importants</div><div class="card-footer"><div class="card-price">90€</div><span class="card-cta">Réserver →</span></div></div>
+  </div>
+</div>
+
+<div class="category">
+  <div class="category-header"><h3>🛠️ Installation &amp; Migration</h3></div>
+  <div class="grid">
+    <div class="card" onclick="openModal('install-os')"><div class="card-name">Installation système (OS)</div><div class="card-desc">Donnez une seconde vie à votre PC</div><div class="card-footer"><div class="card-price">70€</div><span class="card-cta">Réserver →</span></div></div>
+    <div class="card" onclick="openModal('prep-pc')"><div class="card-name">Préparation PC neuf</div><div class="card-desc">Configuration et optimisation dès le départ</div><div class="card-footer"><div class="card-price">70€</div><span class="card-cta">Réserver →</span></div></div>
+    <div class="card" onclick="openModal('migration')"><div class="card-name">Migration / Clonage disque</div><div class="card-desc">Passez à un SSD sans perte de données</div><div class="card-footer"><div class="card-price">100€</div><span class="card-cta">Réserver →</span></div></div>
+  </div>
+</div>
+
+<div class="category">
+  <div class="category-header"><h3>🔐 Sécurité &amp; Protection</h3></div>
+  <div class="grid">
+    <div class="card" onclick="openModal('secu-poste')"><div class="card-name">Sécurisation poste de travail</div><div class="card-desc">Protection de votre ordinateur et de vos accès</div><div class="card-footer"><div class="card-price">90€</div><span class="card-cta">Réserver →</span></div></div>
+    <div class="card" onclick="openModal('backup-part')"><div class="card-name">Sauvegardes personnalisées</div><div class="card-desc">Protection de vos fichiers importants</div><div class="card-footer"><div class="card-price">90€</div><span class="card-cta">Réserver →</span></div></div>
+  </div>
+</div>
+
+<div class="category category-soon part">
+  <div class="category-header"><h3>🎓 Accompagnement <span class="soon-badge">⏳ Bientôt</span></h3></div>
+  <div class="grid">
+    <div class="card"><div class="card-name">Coaching numérique</div><div class="card-desc">Aide personnalisée à votre rythme</div><div class="card-footer"><div class="card-price">60€</div></div></div>
+    <div class="card"><div class="card-name">Sensibilisation cybersécurité</div><div class="card-desc">Comprendre et éviter les risques</div><div class="card-footer"><div class="card-price">90€</div></div></div>
+  </div>
+</div>
+```
+
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <span class="footer-brand">fulman · SASU · SIRET 995 377 595 00013 · 2025</span>
+    <div class="footer-links">
+      <button class="footer-link" onclick="openLegal('mentions')">Mentions légales</button>
+      <button class="footer-link" onclick="openLegal('cgv')">CGV</button>
+      <button class="footer-link" onclick="openLegal('rgpd')">RGPD</button>
+      <button class="footer-link" onclick="openLegal('remboursement')">Remboursements</button>
+      <button class="footer-link" onclick="openLegal('prestation')">Prestation</button>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     BOOKING MODAL
+═══════════════════════════════════════ -->
+
+<div class="overlay" id="overlay" onclick="handleOverlayClick(event)">
+  <div class="modal" id="modal">
+    <div class="modal-handle"></div>
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-steps-nav" id="stepsNav">
+      <div class="modal-step-tab active" id="tab0">① Service</div>
+      <div class="modal-step-tab" id="tab1">② Créneau</div>
+      <div class="modal-step-tab" id="tab2">③ Informations</div>
+      <div class="modal-step-tab" id="tab3">④ Confirmation</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-service-header" id="serviceHeader"></div>
+
+```
+  <!-- STEP 0 -- Info service -->
+  <div class="step-panel active" id="step0">
+    <div id="serviceDetail"></div>
+    <div class="modal-nav">
+      <button class="btn" id="btnStep0Next" onclick="goStep(1)">Choisir un créneau →</button>
+    </div>
+  </div>
+
+  <!-- STEP 1 -- Calendrier -->
+  <div class="step-panel" id="step1">
+    <div class="calendar-wrap">
+      <div class="cal-month-nav">
+        <button class="cal-nav-btn" onclick="prevMonth()">‹</button>
+        <div class="cal-month-label" id="calMonthLabel"></div>
+        <button class="cal-nav-btn" onclick="nextMonth()">›</button>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+    <div class="time-section" id="timeSection" style="display:none;">
+      <div class="time-section-label">Choisissez un horaire</div>
+      <div class="time-grid" id="timeGrid"></div>
+    </div>
+    <div class="no-date-hint" id="noDateHint">← Sélectionnez une date disponible</div>
+    <div class="modal-nav">
+      <button class="btn btn-back" onclick="goStep(0)">‹</button>
+      <button class="btn btn-disabled" id="btnStep1Next" onclick="goStep(2)">Remplir le formulaire →</button>
+    </div>
+  </div>
+
+  <!-- STEP 2 -- Formulaire -->
+  <div class="step-panel" id="step2">
+    <div id="formContainer"></div>
+    <div class="modal-nav">
+      <button class="btn btn-back" onclick="goStep(1)">‹</button>
+      <button class="btn" id="btnStep2Next" onclick="goStep(3)">Récapitulatif →</button>
+    </div>
+  </div>
+
+  <!-- STEP 3 -- Confirmation -->
+  <div class="step-panel" id="step3">
+    <div class="booking-summary" id="bookingSummary"></div>
+    <p style="font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.7;">En cliquant sur le bouton ci-dessous, votre demande de réservation sera envoyée à Fulman via WhatsApp. Vous recevrez une confirmation dans les plus brefs délais.</p>
+    <div class="modal-nav" style="flex-direction:column;">
+      <button class="btn btn-wa" id="btnSendWA" onclick="sendWhatsApp()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Envoyer ma réservation
+      </button>
+      <button class="btn btn-back" onclick="goStep(2)" style="flex:0 0 auto;margin-top:8px;">‹ Modifier</button>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</div>
+
+<!-- LEGAL MODAL -->
+
+<div class="legal-overlay" id="legal-overlay" onclick="handleLegalClick(event)">
+  <div class="legal-modal">
+    <div class="legal-handle"></div>
+    <button class="legal-close" onclick="closeLegal()">✕</button>
+    <div class="legal-tabs">
+      <button class="legal-tab-btn active" data-tab="mentions" onclick="switchTab('mentions')">Mentions légales</button>
+      <button class="legal-tab-btn" data-tab="cgv" onclick="switchTab('cgv')">CGV</button>
+      <button class="legal-tab-btn" data-tab="rgpd" onclick="switchTab('rgpd')">RGPD</button>
+      <button class="legal-tab-btn" data-tab="remboursement" onclick="switchTab('remboursement')">Remboursements</button>
+      <button class="legal-tab-btn" data-tab="prestation" onclick="switchTab('prestation')">Prestation</button>
+    </div>
+
+```
+<div class="legal-tab-content active" id="tab-mentions">
+  <div class="legal-title">Mentions légales</div>
+  <div class="legal-section"><h3>🧾 Éditeur du site</h3><div class="legal-contact-box"><strong>FULMAN</strong> -- SASU<br>58 rue de Monceau, CS 48756 -- 75008 Paris<br><a href="mailto:fulman.contact@gmail.com">fulman.contact@gmail.com</a></div></div>
+  <div class="legal-section"><h3>🧾 Immatriculation</h3><p>SIRET : <strong>995 377 595 00013</strong> -- Forme juridique : SASU</p></div>
+  <div class="legal-section"><h3>🧾 Hébergeur</h3><div class="legal-contact-box"><strong>GitHub, Inc.</strong><br>88 Colin P. Kelly Jr. Street -- San Francisco, CA 94107 -- États-Unis</div></div>
+  <div class="legal-section"><h3>🧾 Propriété intellectuelle</h3><p>Tous les contenus présents sur le site fulman.fr sont la propriété de FULMAN. Toute reproduction sans autorisation est interdite.</p></div>
+</div>
+
+<div class="legal-tab-content" id="tab-cgv">
+  <div class="legal-title">Conditions Générales de Vente</div>
+  <div class="legal-section"><h3>Article 1 -- Objet</h3><p>Les présentes CGV encadrent les prestations proposées par FULMAN : services informatiques, assistance technique, installation, optimisation système et vente de matériel.</p></div>
+  <hr class="legal-divider">
+  <div class="legal-section"><h3>Article 2 -- Commande &amp; Paiement</h3><p>Toute commande implique la sélection d'un service, la réservation d'un créneau et le paiement. La commande est ferme après validation du paiement. Aucune prestation ne débute sans paiement confirmé.</p></div>
+  <hr class="legal-divider">
+  <div class="legal-section"><h3>Article 3 -- Prix</h3><p>Les prix sont indiqués en euros TTC. FULMAN se réserve le droit de modifier ses tarifs sans impact sur les commandes déjà validées.</p></div>
+  <hr class="legal-divider">
+  <div class="legal-section"><h3>Article 4 -- Annulation</h3><ul><li>Annulation possible jusqu'à 24h avant le rendez-vous</li><li>Aucun remboursement après début de prestation</li><li>Remboursement si FULMAN ne peut pas exécuter le service</li></ul></div>
+  <hr class="legal-divider">
+  <div class="legal-section"><h3>Article 5 -- Responsabilité</h3><p>FULMAN ne peut être tenu responsable des pertes de données non sauvegardées, des dommages liés au matériel client ou des problèmes logiciels tiers.</p></div>
+</div>
+
+<div class="legal-tab-content" id="tab-rgpd">
+  <div class="legal-title">Politique de confidentialité (RGPD)</div>
+  <div class="legal-section"><h3>🔐 Données collectées</h3><ul><li>Nom et prénom</li><li>Adresse email</li><li>Téléphone (si fourni)</li><li>Informations liées au besoin client</li></ul></div>
+  <hr class="legal-divider">
+  <div class="legal-section"><h3>🎯 Finalité &amp; Conservation</h3><p>Données utilisées pour la gestion des réservations et l'exécution des services. Conservées 12 mois maximum, jamais revendues.</p></div>
+  <hr class="legal-divider">
+  <div class="legal-section"><h3>✅ Vos droits</h3><p>Accès, modification ou suppression de vos données :</p><div class="legal-contact-box"><a href="mailto:fulman.contact@gmail.com">fulman.contact@gmail.com</a></div></div>
+  <hr class="legal-divider">
+  <div class="legal-section"><h3>🍪 Cookies</h3><p>Cookies techniques uniquement. Aucun cookie publicitaire ni tracking tiers.</p></div>
+</div>
+
+<div class="legal-tab-content" id="tab-remboursement">
+  <div class="legal-title">Politique de remboursement</div>
+  <div class="legal-section"><h3>✅ Remboursements possibles</h3><ul><li>Si la prestation n'a pas encore commencé</li><li>Si FULMAN est dans l'incapacité d'exécuter le service</li></ul></div>
+  <hr class="legal-divider">
+  <div class="legal-section"><h3>❌ Aucun remboursement</h3><ul><li>Après le début de la prestation</li><li>En cas de changement d'avis du client</li><li>En cas d'absence au rendez-vous</li></ul></div>
+  <div class="legal-contact-box" style="margin-top:12px;">Contact : <a href="mailto:fulman.contact@gmail.com">fulman.contact@gmail.com</a></div>
+</div>
+
+<div class="legal-tab-content" id="tab-prestation">
+  <div class="legal-title">Conditions de prestation</div>
+  <div class="legal-section"><h3>⚙️ Fonctionnement</h3><ul><li>Choix du service dans le catalogue</li><li>Réservation d'un créneau</li><li>Paiement en ligne</li><li>Formulaire de description du besoin</li><li>Prestation réalisée à distance ou sur site</li></ul></div>
+  <hr class="legal-divider">
+  <div class="legal-section"><h3>📋 Obligations du client</h3><ul><li>Fournir des informations exactes</li><li>Être disponible au créneau réservé</li><li>Fournir les accès nécessaires</li></ul></div>
+  <hr class="legal-divider">
+  <div class="legal-section"><h3>⚠️ Limites de responsabilité</h3><ul><li>Configurations existantes non documentées</li><li>Dysfonctionnements de logiciels tiers</li><li>Pertes de données sans sauvegarde préalable</li></ul></div>
+</div>
+```
+
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════
+   SERVICE DATA
+═══════════════════════════════════ */
+const services = {
+  'diag-part':{type:'part',cat:'Diagnostic & Dépannage',title:'Diagnostic initial',price:'30€',formType:'diag',
+    desc:`Votre PC fait un bruit bizarre, ne s'allume plus, affiche des erreurs ? On analyse votre machine de fond en comble pour identifier précisément ce qui ne va pas. Compte-rendu clair et recommandations honnêtes, sans engagement.`,
+    includes:['Analyse matérielle complète (processeur, RAM, disque, alimentation)','Vérification du système d\'exploitation','Recherche de logiciels malveillants','Test de stabilité et de température','Recommandations avec estimation de coût'],
+    ideal:`<strong>Idéal si :</strong> vous ne savez pas d'où vient le problème et voulez un avis expert avant de décider quoi faire.`},
+  'depannage-part':{type:'part',cat:'Diagnostic & Dépannage',title:'Dépannage',price:'60€/h',formType:'diag',
+    desc:`Écran bleu, connexion qui lâche, imprimante muette, logiciel qui plante... On intervient directement pour corriger le problème et éviter que ça se reproduise.`,
+    includes:['Prise en charge du problème signalé','Intervention à distance ou en présentiel','Explication de la cause et de la solution','Test de bon fonctionnement','Conseils pour éviter la récidive'],
+    ideal:`<strong>Idéal si :</strong> vous avez un problème identifié et voulez qu'il soit réglé rapidement.`},
+  'recup-data':{type:'part',cat:'Diagnostic & Dépannage',title:'Récupération de données',price:'90€',formType:'diag',
+    desc:`Vous avez supprimé des fichiers par erreur, votre disque est tombé en panne ? On met tout en œuvre pour récupérer vos photos, documents et fichiers précieux.`,
+    includes:['Analyse de l\'état du support (disque, SSD, clé USB, carte SD)','Récupération avec outils spécialisés','Extraction et vérification des données récupérées','Conseils pour éviter toute perte future'],
+    ideal:`<strong>Idéal si :</strong> vous avez perdu des fichiers. <em>Le succès dépend de l'état du support.</em>`},
+  'install-os':{type:'part',cat:'Installation & Migration',title:'Installation système (OS)',price:'70€',formType:'install',
+    desc:`Une réinstallation propre remet votre machine à zéro -- comme au premier jour. On s'occupe de tout jusqu'à vous rendre un PC prêt à l'emploi.`,
+    includes:['Sauvegarde préalable de vos données','Installation officielle de Windows 10 ou 11','Installation des pilotes adaptés','Configuration du compte utilisateur','Installation des logiciels essentiels'],
+    ideal:`<strong>Idéal si :</strong> votre PC est lent, infecté par un virus, ou vous voulez repartir sur une base saine.`},
+  'prep-pc':{type:'part',cat:'Installation & Migration',title:'Préparation PC neuf',price:'70€',formType:'install',
+    desc:`Les PC neufs arrivent chargés de logiciels inutiles et sans protection. On prépare votre machine correctement dès le départ.`,
+    includes:['Suppression des logiciels bloatware','Mise à jour complète du système','Installation et paramétrage d\'un antivirus','Activation de la sauvegarde automatique','Conseils personnalisés'],
+    ideal:`<strong>Idéal si :</strong> vous venez d'acheter un PC et voulez démarrer du bon pied.`},
+  'migration':{type:'part',cat:'Installation & Migration',title:'Migration / Clonage disque',price:'100€',formType:'install',
+    desc:`On transfère l'intégralité de votre système -- Windows, applications, fichiers -- vers le nouveau disque sans rien perdre.`,
+    includes:['Diagnostic de votre disque actuel','Clonage complet (système + données)','Vérification de l\'intégrité','Installation physique du nouveau disque','Effacement sécurisé de l\'ancien'],
+    ideal:`<strong>Idéal si :</strong> vous passez d'un HDD à un SSD ou remplacez un disque vieillissant.`},
+  'secu-poste':{type:'part',cat:'Sécurité & Protection',title:'Sécurisation poste de travail',price:'90€',formType:'basic',
+    desc:`On sécurise votre PC de A à Z pour que vous naviguiez l'esprit tranquille, sans craindre virus, piratage ou vol de mot de passe.`,
+    includes:['Audit de sécurité du poste','Installation et configuration d\'un antivirus performant','Nettoyage des logiciels suspects','Configuration d\'un gestionnaire de mots de passe','Conseils sur les bonnes habitudes numériques'],
+    ideal:`<strong>Idéal si :</strong> vous n'avez jamais vraiment sécurisé votre PC ou avez été victime d'un virus.`},
+  'backup-part':{type:'part',cat:'Sécurité & Protection',title:'Sauvegardes personnalisées',price:'90€',formType:'basic',
+    desc:`On met en place une stratégie de sauvegarde automatique, fiable et adaptée à votre usage.`,
+    includes:['Analyse de vos besoins','Configuration d\'une sauvegarde locale et cloud','Automatisation des sauvegardes','Test de restauration','Guide de suivi'],
+    ideal:`<strong>Idéal si :</strong> vous n'avez aucune sauvegarde en place.`},
+  'reseau-install':{type:'pro',cat:'Réseau & Infrastructure',title:'Installation & Configuration réseau',price:'à partir de 150€',formType:'pro',
+    desc:`On conçoit et installe votre réseau de A à Z -- WiFi performant, postes reliés, accès sécurisés.`,
+    includes:['150€ pour 1 poste · +20€ par poste supplémentaire','Audit et conception du plan réseau','Installation routeur et switch','Déploiement WiFi professionnel','Documentation remise à la fin'],
+    ideal:`<strong>Idéal si :</strong> vous ouvrez de nouveaux locaux ou votre réseau actuel est instable.`},
+  'admin-reseau':{type:'pro',cat:'Réseau & Infrastructure',title:'Administration réseau',price:'à partir de 50€/mois',formType:'pro',
+    desc:`On prend en charge la gestion de votre réseau au quotidien sans que vous ayez à vous en préoccuper.`,
+    includes:['50€/mois pour 1 poste · +20€ par poste supplémentaire','Supervision continue','Mises à jour et configurations','Rapport mensuel','Intervention prioritaire en cas d\'incident'],
+    ideal:`<strong>Idéal si :</strong> vous n'avez pas de responsable IT en interne.`},
+  'audit':{type:'pro',cat:'Cybersécurité',title:'Audit santé numérique',price:'150€',formType:'pro',
+    desc:`Un audit complet dresse un état des lieux objectif de votre sécurité avec un rapport clair et un plan d'action concret.`,
+    includes:['Analyse du parc informatique','Audit des accès et mots de passe','Vérification des mises à jour de sécurité','Rapport priorisé : critiques, moyens, faibles','Présentation des résultats'],
+    ideal:`<strong>Idéal si :</strong> vous n'avez jamais fait auditer votre sécurité.`},
+  'remediation':{type:'pro',cat:'Cybersécurité',title:'Remédiation & Sécurisation',price:'120€',formType:'pro',
+    desc:`On corrige les vulnérabilités, renforce la sécurité de vos systèmes et met en place les bonnes pratiques.`,
+    includes:['Correction des failles identifiées','Durcissement des configurations','Mise à jour et patch de sécurité','Renforcement de la politique de mots de passe','Vérification post-remédiation'],
+    ideal:`<strong>Idéal si :</strong> vous venez de réaliser un audit ou avez subi un incident.`},
+  'teletravail':{type:'pro',cat:'Cybersécurité',title:'Pack Poste Télétravail',price:'120€',formType:'pro',
+    desc:`On configure chaque poste pour qu'il soit aussi sécurisé que dans vos locaux, où que soit le collaborateur.`,
+    includes:['Configuration du VPN d\'entreprise','Chiffrement du disque dur','Installation de l\'antivirus professionnel','Politique de verrouillage automatique','Sensibilisation du collaborateur'],
+    ideal:`<strong>Idéal si :</strong> vous avez des collaborateurs en télétravail.`},
+  'backup-pro':{type:'pro',cat:'Cybersécurité',title:'Sauvegardes personnalisées',price:'90€',formType:'pro',
+    desc:`On conçoit une stratégie de sauvegarde robuste adaptée à vos contraintes métier.`,
+    includes:['Audit des données critiques','Solution de sauvegarde locale et/ou cloud','Chiffrement des sauvegardes','Test de restauration complet','Procédure de récupération d\'urgence'],
+    ideal:`<strong>Idéal si :</strong> vous n'avez pas de politique de sauvegarde formalisée.`},
+  'soc':{type:'pro',cat:'Abonnements',title:'Cyber Monitoring (SOC)',price:'79€/mois',formType:'pro',
+    desc:`Notre surveillance continue analyse en temps réel les activités de votre système et vous alerte immédiatement en cas de menace.`,
+    includes:['Surveillance 24h/24, 7j/7','Détection des comportements anormaux','Alertes immédiates en cas de menace','Rapport mensuel de sécurité','Intervention rapide en cas d\'incident'],
+    ideal:`<strong>Idéal si :</strong> vous gérez des données sensibles ou avez des obligations de conformité.`},
+  'support-mensuel':{type:'pro',cat:'Abonnements',title:'Support Mensuel',price:'70€/mois',formType:'pro',
+    desc:`Un expert disponible rapidement pour résoudre vos incidents et garder vos outils opérationnels.`,
+    includes:['Accès prioritaire au support technique','Assistance téléphone, email et prise de contrôle à distance','Résolution des incidents du quotidien','Temps de réponse garanti sous 4h ouvrées','Rapport mensuel des interventions'],
+    ideal:`<strong>Idéal si :</strong> vous n'avez pas de service IT interne.`},
+  'maintenance':{type:'pro',cat:'Abonnements',title:'Maintenance Mensuelle',price:'60€/mois · /PC',formType:'pro',
+    desc:`Chaque mois, on s'assure que vos postes sont à jour, optimisés, et que rien ne se dégrade silencieusement.`,
+    includes:['Mise à jour du système et des logiciels critiques','Nettoyage et optimisation des performances','Vérification de l\'état des disques','Contrôle de la protection antivirus','Rapport mensuel par poste'],
+    ideal:`<strong>Idéal si :</strong> vous souhaitez éviter les pannes imprévues.`},
+  'secu-complete':{type:'pro',cat:'Abonnements',title:'Sécurité Complète',price:'129€/mois',formType:'pro',
+    desc:`Notre offre la plus complète : maintenance, support réactif et cybersécurité active. Un seul abonnement, une tranquillité totale.`,
+    includes:['Tout le contenu du Support Mensuel','Tout le contenu de la Maintenance Mensuelle','Surveillance de sécurité et détection des menaces','Rapport mensuel consolidé','Consultation trimestrielle','Tarif préférentiel sur interventions ponctuelles'],
+    ideal:`<strong>Idéal si :</strong> vous voulez déléguer entièrement votre informatique.`},
+  'diag-pro':{type:'pro',cat:'Diagnostic & Dépannage',title:'Diagnostic initial',price:'30€',formType:'diag-pro',
+    desc:`On identifie précisément l'origine du problème pour éviter les fausses pistes et les interventions inutiles.`,
+    includes:['Analyse matérielle et logicielle','Consultation des journaux d\'événements','Identification de la cause racine','Compte-rendu avec recommandations','Estimation du coût de résolution'],
+    ideal:`<strong>Idéal si :</strong> vous ne savez pas d'où vient le problème.`},
+  'depannage-pro':{type:'pro',cat:'Diagnostic & Dépannage',title:'Dépannage',price:'60€/h',formType:'diag-pro',
+    desc:`On intervient rapidement -- à distance ou sur site -- pour remettre votre équipe au travail le plus vite possible.`,
+    includes:['Prise en charge rapide de l\'incident','Intervention à distance ou sur site','Résolution et test de bon fonctionnement','Rapport d\'intervention','Recommandations pour éviter la récidive'],
+    ideal:`<strong>Idéal si :</strong> un incident imprévu impacte votre activité.`},
+  'recup-pro':{type:'pro',cat:'Diagnostic & Dépannage',title:'Récupération de données',price:'90€',formType:'diag-pro',
+    desc:`On déploie les outils spécialisés pour maximiser les chances de récupération, en toute confidentialité.`,
+    includes:['Analyse du support défaillant','Récupération avec outils forensiques professionnels','Extraction et vérification des données','Transfert sécurisé vers nouveau support','Rapport d\'intervention'],
+    ideal:`<strong>Idéal si :</strong> vous avez perdu l'accès à des données critiques. <em>Les chances dépendent de l'état du support.</em>`}
+};
+
+/* ═══════════════════════════════════
+   FORM TEMPLATES
+═══════════════════════════════════ */
+const forms = {
+  basic: `
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Prénom <span class="req">*</span></label><input class="form-input" id="f_prenom" placeholder="Jean"></div>
+      <div class="form-group"><label class="form-label">Nom <span class="req">*</span></label><input class="form-input" id="f_nom" placeholder="Dupont"></div>
+    </div>
+    <div class="form-group"><label class="form-label">Téléphone <span class="req">*</span></label><input class="form-input" id="f_tel" type="tel" placeholder="06 12 34 56 78"></div>
+    <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="f_email" type="email" placeholder="jean@email.com"></div>`,
+
+  diag: `
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Prénom <span class="req">*</span></label><input class="form-input" id="f_prenom" placeholder="Jean"></div>
+      <div class="form-group"><label class="form-label">Nom <span class="req">*</span></label><input class="form-input" id="f_nom" placeholder="Dupont"></div>
+    </div>
+    <div class="form-group"><label class="form-label">Téléphone <span class="req">*</span></label><input class="form-input" id="f_tel" type="tel" placeholder="06 12 34 56 78"></div>
+    <div class="form-group"><label class="form-label">Marque &amp; modèle du PC <span class="req">*</span></label><input class="form-input" id="f_pc" placeholder="Ex: HP Pavilion 15, Dell XPS 13..."></div>
+    <div class="form-group"><label class="form-label">Système d'exploitation <span class="req">*</span></label>
+      <select class="form-select" id="f_os">
+        <option value="">Choisir...</option>
+        <option>Windows 11</option><option>Windows 10</option><option>Windows 8/8.1</option><option>Windows 7</option><option>macOS</option><option>Linux</option><option>Je ne sais pas</option>
+      </select></div>
+    <div class="form-group"><label class="form-label">Depuis quand ? <span class="req">*</span></label>
+      <select class="form-select" id="f_duree">
+        <option value="">Choisir...</option>
+        <option>Depuis aujourd'hui</option><option>Depuis quelques jours</option><option>Depuis 1-2 semaines</option><option>Depuis plus d'un mois</option><option>Depuis plusieurs mois</option>
+      </select></div>
+    <div class="form-group"><label class="form-label">Description du problème <span class="req">*</span></label><textarea class="form-textarea" id="f_desc" placeholder="Décrivez le problème en quelques mots..."></textarea></div>
+
+```
+<div class="form-group"><label class="form-label">Avez-vous déjà essayé des solutions ?</label><textarea class="form-textarea" id="f_essais" placeholder="Si oui, lesquelles ? (redémarrage, antivirus, etc.)" style="min-height:60px;"></textarea></div>`,
+```
+
+install: ` <div class="form-row"> <div class="form-group"><label class="form-label">Prénom <span class="req">*</span></label><input class="form-input" id="f_prenom" placeholder="Jean"></div> <div class="form-group"><label class="form-label">Nom <span class="req">*</span></label><input class="form-input" id="f_nom" placeholder="Dupont"></div> </div> <div class="form-group"><label class="form-label">Téléphone <span class="req">*</span></label><input class="form-input" id="f_tel" type="tel" placeholder="06 12 34 56 78"></div> <div class="form-group"><label class="form-label">Système actuel <span class="req">*</span></label> <select class="form-select" id="f_os"> <option value="">Choisir...</option> <option>Windows 11</option><option>Windows 10</option><option>Windows 8/8.1</option><option>Windows 7</option><option>Aucun (PC neuf/vide)</option><option>Je ne sais pas</option> </select></div> <div class="form-group"><label class="form-label">Type de disque à cloner / remplacer</label> <select class="form-select" id="f_disque"> <option value="">Choisir...</option> <option>HDD → SSD (migration)</option><option>SSD → SSD (remplacement)</option><option>Pas de clonage nécessaire</option><option>Je ne sais pas</option> </select></div> <div class="form-group"><label class="form-label">Licence Windows disponible ?</label> <select class="form-select" id="f_licence"> <option value="">Choisir...</option> <option>Oui, j'ai ma clé de licence</option><option>Non, elle était intégrée au PC</option><option>Je ne sais pas</option> </select></div> <div class="form-group"><label class="form-label">Données à sauvegarder avant l'intervention ?</label> <select class="form-select" id="f_sauvegarde"> <option value="">Choisir...</option> <option>Oui, je veux que vous sauvegardiez mes données</option><option>Non, j'ai déjà tout sauvegardé</option><option>Non, il n'y a rien à conserver</option> </select></div> <div class="form-group"><label class="form-label">Remarques</label><textarea class="form-textarea" id="f_desc" placeholder="Informations complémentaires..." style="min-height:60px;"></textarea></div>`,
+
+pro: ` <div class="form-row"> <div class="form-group"><label class="form-label">Prénom <span class="req">*</span></label><input class="form-input" id="f_prenom" placeholder="Jean"></div> <div class="form-group"><label class="form-label">Nom <span class="req">*</span></label><input class="form-input" id="f_nom" placeholder="Dupont"></div> </div> <div class="form-group"><label class="form-label">Téléphone <span class="req">*</span></label><input class="form-input" id="f_tel" type="tel" placeholder="06 12 34 56 78"></div> <div class="form-group"><label class="form-label">Nom de l'entreprise <span class="req">*</span></label><input class="form-input" id="f_entreprise" placeholder="Ma Société SAS"></div> <div class="form-group"><label class="form-label">Secteur d'activité <span class="req">*</span></label> <select class="form-select" id="f_secteur"> <option value="">Choisir...</option> <option>Commerce / Retail</option><option>Santé / Médical</option><option>Juridique / Cabinet</option><option>BTP / Artisanat</option><option>Restauration / Hôtellerie</option><option>Services aux entreprises</option><option>Immobilier</option><option>Transport / Logistique</option><option>Autre</option> </select></div> <div class="form-group"><label class="form-label">Nombre de postes <span class="req">*</span></label> <select class="form-select" id="f_postes"> <option value="">Choisir...</option> <option>1 poste</option><option>2-5 postes</option><option>6-10 postes</option><option>11-20 postes</option><option>Plus de 20 postes</option> </select></div> <div class="form-group"><label class="form-label">Déjà un prestataire IT ?</label> <select class="form-select" id="f_prestataire"> <option value="">Choisir...</option> <option>Non, aucun</option><option>Oui, mais insatisfait</option><option>Oui, en complément</option> </select></div> <div class="form-group"><label class="form-label">Problématique principale <span class="req">*</span></label><textarea class="form-textarea" id="f_desc" placeholder="Décrivez votre besoin ou votre problème actuel..."></textarea></div>`,
+
+'diag-pro': ` <div class="form-row"> <div class="form-group"><label class="form-label">Prénom <span class="req">*</span></label><input class="form-input" id="f_prenom" placeholder="Jean"></div> <div class="form-group"><label class="form-label">Nom <span class="req">*</span></label><input class="form-input" id="f_nom" placeholder="Dupont"></div> </div> <div class="form-group"><label class="form-label">Téléphone <span class="req">*</span></label><input class="form-input" id="f_tel" type="tel" placeholder="06 12 34 56 78"></div> <div class="form-group"><label class="form-label">Entreprise</label><input class="form-input" id="f_entreprise" placeholder="Ma Société SAS"></div> <div class="form-group"><label class="form-label">Marque &amp; modèle du poste concerné <span class="req">*</span></label><input class="form-input" id="f_pc" placeholder="Ex: Dell Latitude 5420, HP EliteBook..."></div> <div class="form-group"><label class="form-label">Système d'exploitation <span class="req">*</span></label> <select class="form-select" id="f_os"> <option value="">Choisir...</option> <option>Windows 11 Pro</option><option>Windows 10 Pro</option><option>Windows Server</option><option>Linux</option><option>Autre</option> </select></div> <div class="form-group"><label class="form-label">Depuis quand ? <span class="req">*</span></label> <select class="form-select" id="f_duree"> <option value="">Choisir...</option> <option>Depuis aujourd'hui</option><option>Depuis quelques jours</option><option>Depuis 1-2 semaines</option><option>Depuis plus d'un mois</option> </select></div> <div class="form-group"><label class="form-label">Description du problème <span class="req">*</span></label><textarea class="form-textarea" id="f_desc" placeholder="Décrivez le problème en détail..."></textarea></div> <div class="form-group"><label class="form-label">Solutions déjà testées ?</label><textarea class="form-textarea" id="f_essais" placeholder="Redémarrage, ticket DSI, etc." style="min-height:60px;"></textarea></div>`
+};
+
+/* ═══════════════════════════════════
+CALENDAR STATE
+═══════════════════════════════════ */
+let calYear, calMonth, selectedDate = null, selectedTime = null;
+const WORK_HOURS_NORMAL  = ['07:00','08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00'];
+const WORK_HOURS_FRIDAY  = ['07:00','08:00','09:00','10:00','11:00','12:00'];
+
+let currentService = null;
+let currentStep = 0;
+
+function initCalendar() {
+const now = new Date();
+calYear  = now.getFullYear();
+calMonth = now.getMonth();
+selectedDate = null;
+selectedTime = null;
+renderCalendar();
+}
+
+function renderCalendar() {
+const months = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+document.getElementById('calMonthLabel').textContent = months[calMonth] + ' ' + calYear;
+
+const grid = document.getElementById('calGrid');
+const days = ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'];
+grid.innerHTML = days.map(d => `<div class="cal-day-name">${d}</div>`).join('');
+
+const firstDay = new Date(calYear, calMonth, 1);
+const totalDays = new Date(calYear, calMonth + 1, 0).getDate();
+let startDow = firstDay.getDay(); // 0=Sun
+startDow = startDow === 0 ? 6 : startDow - 1; // Mon=0
+
+const today = new Date(); today.setHours(0,0,0,0);
+
+for (let i = 0; i < startDow; i++) grid.innerHTML += `<div class="cal-day empty"></div>`;
+
+for (let d = 1; d <= totalDays; d++) {
+const date = new Date(calYear, calMonth, d);
+const dow  = date.getDay(); // 0=Sun,6=Sat
+const isPast = date < today;
+const isWeekend = dow === 0 || dow === 6;
+const dateStr = `${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+const isSelected = dateStr === selectedDate;
+
+```
+let cls = 'cal-day';
+if (isPast || isWeekend) cls += isWeekend ? ' unavailable' : ' past';
+else cls += ' available';
+if (isSelected) cls += ' selected';
+
+const clickable = !isPast && !isWeekend;
+grid.innerHTML += `<div class="${cls}" ${clickable ? `onclick="selectDate('${dateStr}',${dow})"` : ''}>${d}</div>`;
+```
+
+}
+}
+
+function selectDate(dateStr, dow) {
+selectedDate = dateStr;
+selectedTime = null;
+renderCalendar();
+
+const isFriday = dow === 5;
+const slots = isFriday ? WORK_HOURS_FRIDAY : WORK_HOURS_NORMAL;
+
+const timeGrid = document.getElementById('timeGrid');
+const timeSection = document.getElementById('timeSection');
+const hint = document.getElementById('noDateHint');
+
+timeGrid.innerHTML = slots.map(t =>
+`<div class="time-slot" onclick="selectTime('${t}',this)">${t}</div>`
+).join('');
+
+timeSection.style.display = 'block';
+hint.style.display = 'none';
+updateStep1Next();
+}
+
+function selectTime(time, el) {
+selectedTime = time;
+document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+el.classList.add('selected');
+updateStep1Next();
+}
+
+function updateStep1Next() {
+const btn = document.getElementById('btnStep1Next');
+if (selectedDate && selectedTime) {
+btn.classList.remove('btn-disabled');
+btn.classList.add(currentService.type === 'part' ? 'btn-next-part' : 'btn-next-pro');
+} else {
+btn.classList.add('btn-disabled');
+btn.classList.remove('btn-next-part','btn-next-pro');
+}
+}
+
+function prevMonth() {
+calMonth–;
+if (calMonth < 0) { calMonth = 11; calYear–; }
+renderCalendar();
+}
+function nextMonth() {
+calMonth++;
+if (calMonth > 11) { calMonth = 0; calYear++; }
+renderCalendar();
+}
+
+/* ═══════════════════════════════════
+MODAL NAVIGATION
+═══════════════════════════════════ */
+function openModal(id) {
+currentService = services[id];
+if (!currentService) return;
+currentStep = 0;
+
+// header
+document.getElementById('serviceHeader').innerHTML = ` <span class="modal-tag ${currentService.type}">${currentService.cat}</span> <div class="modal-title">${currentService.title}</div> <div class="modal-price ${currentService.type}">${currentService.price}</div>`;
+
+// step 0 content
+const incHtml = currentService.includes.map(i=>`<li>${i}</li>`).join('');
+document.getElementById('serviceDetail').innerHTML = ` <p class="service-desc">${currentService.desc}</p> <ul class="includes-list ${currentService.type}">${incHtml}</ul> <div class="ideal-box">${currentService.ideal}</div>`;
+
+// step 0 button color
+const b0 = document.getElementById('btnStep0Next');
+b0.className = 'btn ' + (currentService.type==='part' ? 'btn-next-part' : 'btn-next-pro');
+b0.textContent = 'Choisir un créneau →';
+
+// form
+document.getElementById('formContainer').innerHTML = forms[currentService.formType] || forms.basic;
+
+// step 2 button color
+const b2 = document.getElementById('btnStep2Next');
+b2.className = 'btn ' + (currentService.type==='part' ? 'btn-next-part' : 'btn-next-pro');
+
+// calendar init
+initCalendar();
+goStep(0);
+
+document.getElementById('overlay').classList.add('open');
+document.body.style.overflow = 'hidden';
+}
+
+function goStep(n) {
+// Validate step 2 before going to 3
+if (n === 3 && currentStep === 2) {
+if (!validateForm()) return;
+buildSummary();
+}
+
+currentStep = n;
+document.querySelectorAll('.step-panel').forEach((p,i) => p.classList.toggle('active', i===n));
+document.querySelectorAll('.modal-step-tab').forEach((t,i) => {
+t.classList.remove('active','done');
+if (i === n) t.classList.add('active');
+else if (i < n) t.classList.add('done');
+});
+
+// scroll to top of modal body
+document.querySelector('.modal-body').scrollTop = 0;
+}
+
+function validateForm() {
+const prenom = document.getElementById('f_prenom');
+const nom    = document.getElementById('f_nom');
+const tel    = document.getElementById('f_tel');
+let ok = true;
+[prenom, nom, tel].forEach(el => {
+if (el && !el.value.trim()) { el.style.borderColor = 'var(–error)'; ok = false; }
+else if (el) el.style.borderColor = '';
+});
+
+const desc = document.getElementById('f_desc');
+if (desc && !desc.value.trim()) { desc.style.borderColor = 'var(–error)'; ok = false; }
+else if (desc) desc.style.borderColor = '';
+
+if (!ok) {
+const body = document.querySelector('.modal-body');
+body.scrollTop = 0;
+}
+return ok;
+}
+
+function getFormValues() {
+const get = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+return {
+prenom:      get('f_prenom'),
+nom:         get('f_nom'),
+tel:         get('f_tel'),
+email:       get('f_email'),
+pc:          get('f_pc'),
+os:          get('f_os'),
+duree:       get('f_duree'),
+desc:        get('f_desc'),
+essais:      get('f_essais'),
+disque:      get('f_disque'),
+licence:     get('f_licence'),
+sauvegarde:  get('f_sauvegarde'),
+entreprise:  get('f_entreprise'),
+secteur:     get('f_secteur'),
+postes:      get('f_postes'),
+prestataire: get('f_prestataire'),
+};
+}
+
+function fmtDate(dateStr) {
+if (!dateStr) return '';
+const [y,m,d] = dateStr.split('-');
+const jours = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
+const mois  = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+const dow   = new Date(+y,+m-1,+d).getDay();
+return `${jours[dow]} ${+d} ${mois[+m-1]} ${y}`;
+}
+
+function buildSummary() {
+const v = getFormValues();
+const rows = [
+['Service', currentService.title],
+['Tarif', currentService.price],
+['Date', fmtDate(selectedDate)],
+['Horaire', selectedTime],
+['Nom', `${v.prenom} ${v.nom}`],
+['Téléphone', v.tel],
+];
+if (v.email)       rows.push(['Email', v.email]);
+if (v.entreprise)  rows.push(['Entreprise', v.entreprise]);
+if (v.pc)          rows.push(['PC / Poste', v.pc]);
+if (v.os)          rows.push(['Système', v.os]);
+if (v.duree)       rows.push(['Depuis', v.duree]);
+if (v.secteur)     rows.push(['Secteur', v.secteur]);
+if (v.postes)      rows.push(['Nb postes', v.postes]);
+if (v.disque)      rows.push(['Disque', v.disque]);
+if (v.licence)     rows.push(['Licence', v.licence]);
+if (v.sauvegarde)  rows.push(['Sauvegarde', v.sauvegarde]);
+if (v.prestataire) rows.push(['Prestataire actuel', v.prestataire]);
+if (v.desc)        rows.push(['Description', v.desc]);
+if (v.essais)      rows.push(['Solutions testées', v.essais]);
+
+document.getElementById('bookingSummary').innerHTML = `<div class="booking-summary-title">📋 Récapitulatif de votre réservation</div> ${rows.map(([k,val]) => val ?`
+<div class="booking-summary-row">
+<span class="booking-summary-key">${k}</span>
+<span class="booking-summary-val">${val}</span>
+</div>` : '').join('')}`;
+}
+
+function sendWhatsApp() {
+const v = getFormValues();
+const s = currentService;
+const ft = (currentService.formType || '');
+
+let msg = `🔧 *Nouvelle réservation Fulman*\n\n`;
+msg += `*Service :* ${s.title}\n`;
+msg += `*Tarif :* ${s.price}\n`;
+msg += `*Date :* ${fmtDate(selectedDate)}\n`;
+msg += `*Horaire :* ${selectedTime}\n\n`;
+msg += `*Client :* ${v.prenom} ${v.nom}\n`;
+msg += `*Téléphone :* ${v.tel}\n`;
+if (v.email)       msg += `*Email :* ${v.email}\n`;
+if (v.entreprise)  msg += `*Entreprise :* ${v.entreprise}\n`;
+if (v.secteur)     msg += `*Secteur :* ${v.secteur}\n`;
+if (v.postes)      msg += `*Nb postes :* ${v.postes}\n`;
+if (v.prestataire) msg += `*Prestataire actuel :* ${v.prestataire}\n`;
+if (v.pc)          msg += `\n*PC / Poste :* ${v.pc}\n`;
+if (v.os)          msg += `*Système :* ${v.os}\n`;
+if (v.duree)       msg += `*Depuis :* ${v.duree}\n`;
+if (v.disque)      msg += `*Disque :* ${v.disque}\n`;
+if (v.licence)     msg += `*Licence :* ${v.licence}\n`;
+if (v.sauvegarde)  msg += `*Sauvegarde :* ${v.sauvegarde}\n`;
+if (v.desc)        msg += `\n*Description :*\n${v.desc}\n`;
+if (v.essais)      msg += `\n*Solutions testées :*\n${v.essais}\n`;
+
+const url = `https://wa.me/33743586807?text=${encodeURIComponent(msg)}`;
+window.open(url, '_blank');
+}
+
+function closeModal() {
+document.getElementById('overlay').classList.remove('open');
+document.body.style.overflow = '';
+}
+function handleOverlayClick(e) {
+if (e.target === document.getElementById('overlay')) closeModal();
+}
+
+/* ═══════════════════════════════════
+LEGAL MODAL
+═══════════════════════════════════ */
+function openLegal(tab = 'mentions') {
+switchTab(tab);
+document.getElementById('legal-overlay').classList.add('open');
+document.body.style.overflow = 'hidden';
+}
+function closeLegal() {
+document.getElementById('legal-overlay').classList.remove('open');
+document.body.style.overflow = '';
+}
+function handleLegalClick(e) {
+if (e.target === document.getElementById('legal-overlay')) closeLegal();
+}
+function switchTab(tab) {
+document.querySelectorAll('.legal-tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+document.querySelectorAll('.legal-tab-content').forEach(c => c.classList.toggle('active', c.id === 'tab-' + tab));
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeLegal(); } });
+</script>
+
+</body>
+</html>
